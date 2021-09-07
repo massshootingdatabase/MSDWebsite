@@ -1,0 +1,30 @@
+html {
+    /* background-color: #09081F;
+    color: #F38338; */
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+}
+
+/* https://www.schemecolor.com/orange-black-gradient.php */
+
+nav#site_nav {
+    outline: 4px solid #F38338;
+    margin-bottom: 20px;
+}
+
+nav#site_nav>span {
+    margin-right: 50px;
+    font-size: 30px;
+}
+
+#socials {
+
+}
+
+form > .contact_form_element {
+    margin-bottom: 10px;
+}
+
+/* Necessary to align email message box with its label */
+form > .contact_form_element #contact_message * {
+    vertical-align: text-top;
+}

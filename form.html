@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+    <header>
+        <h1>Mass Shooting Database</h1>
+        <!-- Navigation bar -->
+        <nav id="site_nav">
+            <span><a href="index.html">Home</a></span>
+            <span><a href="data.html">Data</a></span>
+            <span><a href="news.html">News</a></span>
+            <span><a href="form.html">Get Involved</a></span>
+        </nav>
+    </header>
+    
+    <!-- Actual homepage content -->
+    <h2>Call to Action</h2>
+    <p>
+        Next steps for people who want to do something!
+    </p>
+
+    <h2>Contact Us!</h2>
+    <p>
+        Report an error or send us a message.
+    </p>
+
+    <form>
+        <div class="contact_form_element">
+            <label for="email">Email: </label>
+            <input id="email" type="email" required placeholder="example@email.com">
+        </div>
+        <div class="contact_form_element">
+            <label for="subject">Subject: </label>
+            <input id="subject" type="text" required placeholder="Subject...">
+        </div>
+        <div class="contact_form_element">
+            <div id="contact_message">
+                <label for="message">Message:</label>
+                <textarea id=message required placeholder="Your message here..." minlength="20"></textarea>
+                
+            </div>
+        </div>
+
+        <input type="submit" value="Send">
+    </form>
+    
+    
+    <!-- This footer should be inserted at the bottom of each page -->
+    <footer>
+        <nav id="socials">
+            <span>Facebook</span>
+            <span>Instagram</span>
+            <span>Twitter</span>
+            <!-- links to contact form (prevents spam) -->
+            <span>Email</span>
+        </nav>
+        <!-- We'll need some JS to keep this copyright notice up to date... -->
+        <p>Copyright © 2021 Mass Shooting Project</p>
+    </footer>
+</body>
+
