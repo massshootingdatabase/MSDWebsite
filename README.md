@@ -1,23 +1,18 @@
-Stack
-----------------
-We'll be using Typescript for this project. Make sure to compile your code with the TS compiler
+# Stack
+Download Node Package Manager (npm)
 
-Front-end
-React 
-Tailwind CSS - seems interesting, may not be necessary
-Sass - ditto (i'd recommend trying to explore this one though)
-GraphQL - We'll keep this as this will allow the frontend to more efficiently make requests
+## Front-end
+* React 
+* Sass
+* GraphQL - We'll keep this as this will allow the frontend to more efficiently make requests
+* Tailwind CSS - seems interesting, may not be necessary
 
-Feel free to add any frontend testing frameworks.
 
-Back-end
-Express
-Mongoose - will help backend communicate with MongoDB 
+## Back-end
+* Express
+* Mongoose - will help backend communicate with MongoDB 
+* Mongo Express - GUI for doing stuff with MongoDB
 
-Mongo Express will be used for data administration stuff...
-This is mainly for the benefit of the data entry team later on...
-
-----------------
 
 # Getting Started with Create React App
 
@@ -26,6 +21,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Available Scripts
 
 In the project directory, msp, you can run:
+
+### `npm install`
+
+Necessary to install the dependencies needed to run the project.
 
 ### `npm start`
 
