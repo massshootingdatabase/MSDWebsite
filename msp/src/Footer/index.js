@@ -13,7 +13,7 @@ function Footer() {
       <a href="http://www.facebook.com/YOURUSERNAMEHERE"><img className="icon" src={facebookIcon} alt="Facebook"/></a>
     </li>
     <li>
-    <a href="http://www.facebook.com/YOURUSERNAMEHERE"><img className="icon" src={instagramIcon} alt="Instagram" /></a>
+    <a href="https://www.instagram.com/themassshootingdatabase/"><img className="icon" src={instagramIcon} alt="Instagram" /></a>
     </li>
     <li>
     <a href="https://twitter.com/DatabaseMass"><img className="icon" src={twitterIcon} alt="Twitter"/></a>
