@@ -1,5 +1,4 @@
 import App from './App';
-import Header from './Header';
 import Footer from './Footer';
 import NavBar from './NavBar';
 import Home from './Home';
@@ -12,10 +11,6 @@ import "./setupTests.js"
 //https://www.npmjs.com/package/enzyme 
 
 describe('renders app', () => {
-  it('renders with header', () => {
-    const wrapper = shallow(<App />);
-    expect(wrapper.find(Header)).toBeTruthy();
-  })
   it('renders with footer', () => {
     const wrapper = shallow(<App />);
     expect(wrapper.find(Footer)).toBeTruthy();

@@ -1,4 +1,3 @@
-import Header from './Header';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from './Home';
 import News from './News';
@@ -10,7 +9,6 @@ import Footer from './Footer';
 function App() {
   return (
     <div>
-    {/* <Header /> */}
     <Router>
       <NavBar />
       <Switch>
