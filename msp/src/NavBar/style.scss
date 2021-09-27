@@ -1,6 +1,17 @@
 .NavBar {
-  background-color: black;
+  display: flex;
+  flex-direction: row;
+  background-color: #ff914d;
   width: 100%;
+
+  .logo {
+    padding-top: 5px;
+    padding-right: 5px;
+    padding-left: 20px;
+    display: flex;
+    height: 120px;
+    width: 180px;
+  }
 
 .NavBarList { 
     display: flex;
@@ -17,7 +28,7 @@
       list-style-type: none;
       cursor: pointer;
       padding: 10px;
-      color: orange;
+      color: white;
       font-size: 1.5em;
       font-weight: bold;
   }
@@ -28,7 +39,7 @@
 }
 
 .navItem:link, .navItem:visited {
-  color: orange;
+  color:white;
   text-align: center;
   text-decoration: none;
   display: flex-block;

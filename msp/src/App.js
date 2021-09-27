@@ -10,7 +10,7 @@ import Footer from './Footer';
 function App() {
   return (
     <div>
-    <Header />
+    {/* <Header /> */}
     <Router>
       <NavBar />
       <Switch>

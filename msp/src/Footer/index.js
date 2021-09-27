@@ -19,7 +19,7 @@ function Footer() {
     <a href="https://twitter.com/DatabaseMass"><img className="icon" src={twitterIcon} alt="Twitter"/></a>
     </li>
     <li>
-    <a href="http://www.facebook.com/YOURUSERNAMEHERE"><img className="icon" src={emailIcon} alt="Email"/></a>
+    <a href="/getInvolved"><img className="icon" src={emailIcon} alt="Email"/></a>
     </li>
     </ul>
     <span className="copyright">Copyright © 2021 Mass Shooting Project</span>
