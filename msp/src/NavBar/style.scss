@@ -9,18 +9,18 @@
     padding-right: 5px;
     padding-left: 20px;
     display: flex;
-    height: 120px;
-    width: 180px;
+    height: 100px;
+    width: 150px;
   }
 
 .NavBarList { 
+    justify-content: flex-end;
     display: flex;
-    align-items: center; /* Default */
-    justify-content: space-between;
     padding: 10px;
-    margin: auto;
+    margin-right: 20px;
+    align-items: center;
     min-width: fit-content; 
-    width: 60%;
+    width: 100%;
 
     li {
       display: block;
