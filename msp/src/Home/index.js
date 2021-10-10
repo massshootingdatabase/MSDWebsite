@@ -1,14 +1,20 @@
 import React from 'react';
 import "./style.scss";
 
+
+import axios from 'axios';
+
+
 function Home() {
+  // console.log( axios.get('/api') ); // example call to api
+
   return (
     <div className="Home">
     <h2>About the Database</h2>
     <p>
         Our purpose, then official definitions used for the database
     </p>
-
+    
     <h2>Methodology</h2>
     <p>
         How the data is collected, then organized.
@@ -20,7 +26,7 @@ function Home() {
     </p>
     
     </div>
-  )
+  );
 }
 
 export default Home
