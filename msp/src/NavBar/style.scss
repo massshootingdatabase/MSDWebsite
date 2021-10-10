@@ -1,15 +1,26 @@
 .NavBar {
-  background-color: black;
+  display: flex;
+  flex-direction: row;
+  background-color: #ff914d;
   width: 100%;
 
-.NavBarList { 
+  .logo {
+    padding-top: 8px;
+    padding-right: 5px;
+    padding-left: 30px;
     display: flex;
-    align-items: center; /* Default */
-    justify-content: space-between;
+    height: 100px;
+    width: 150px;
+  }
+
+.NavBarList { 
+    justify-content: flex-end;
+    display: flex;
     padding: 10px;
-    margin: auto;
+    margin-right: 40px;
+    align-items: center;
     min-width: fit-content; 
-    width: 60%;
+    width: 100%;
 
     li {
       display: block;
@@ -17,8 +28,8 @@
       list-style-type: none;
       cursor: pointer;
       padding: 10px;
-      color: orange;
-      font-size: 1.5em;
+      color: white;
+      font-size: 1.2em;
       font-weight: bold;
   }
 
@@ -28,7 +39,7 @@
 }
 
 .navItem:link, .navItem:visited {
-  color: orange;
+  color:white;
   text-align: center;
   text-decoration: none;
   display: flex-block;
