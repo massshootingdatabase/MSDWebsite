@@ -20,7 +20,7 @@ This folder is mainly for loading data onto MongoDB.
 * Run the script. CTRL+C after you have created at least 1 JSON file.
 ```
 // swap out upsert with --drop if needed
-mongoimport --db=msd --collection=incidents --upsert=gva_id \
+mongoimport --db=msd --collection=incidents --drop \
 --type=json --jsonArray --file=output1.json
 
 // allows you to quickly modify every value to date...
