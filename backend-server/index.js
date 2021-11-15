@@ -13,25 +13,28 @@ const PORT = process.env.PORT || 5000;
 const SERVER = "mongodb://localhost:27017/";
 let DB = "msd";
 
-app.get('/', (req, res) => {
-    res.send('Hello World!');
-});
 
-app.get('/api/incidents', (req, res) => {
+app.get('/api/incidents', async (req, res) => {
     let conn = mongoose.connect(SERVER + DB); // create default connection
     // since we created default connection, use mongoose.model to use the default connection
     let incidentModel = mongoose.model("Incident", incident); 
-    let query = incidentModel.find({});
 
-    query.exec(function(err, incidents){
-        if(err)
-           return console.log(err);
-        incidents.forEach(function(incident){
-           console.log(incident);
-        });
-    });
-
-    res.send("Query");
+    console.log(req.query);
+    let limit = 100;
+    if (typeof req.query.limit === "string") {
+        limit = parseInt(req.query.limit, 10);
+        if (limit <= 0) {
+            limit = 1;
+        } else if (limit > 1000) {
+            limit = 1000;
+        } else if (isNaN(limit)) {
+            limit = 100;
+        }
+    }
+    
+    console.log(limit);
+    let query = await incidentModel.find().sort({"date": "descending"}).limit(limit);
+    res.json(query);
 });
 
 app.listen(PORT, () => {

@@ -1,9 +1,0 @@
-mongoimport --db=msd --collection=incidents --drop --type=json --jsonArray --file=incidents.json 
-
-db.incidents.aggregate([
-    { "$set" : { "start_date" : { $toDate : "$start_date" } } }
-])
-
-db.incidents.updateMany(
-    {""}
-)

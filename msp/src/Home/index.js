@@ -2,7 +2,7 @@ import React from 'react';
 import "./style.scss";
 
 
-import axios from 'axios';
+// import axios from 'axios';
 
 
 function Home() {

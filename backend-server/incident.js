@@ -9,17 +9,16 @@ const mongoose = require("mongoose");
 const incidentSchema = mongoose.Schema({
     gva_id: Number,
     incident_name: String,
-    start_date: Date, // ISO 8601 format... YYYY-MM-DDThh:mm:ssZ
-    end_date: Date,
+    date: Date, // ISO 8601 format... YYYY-MM-DDThh:mm:ssZ
     place_type: String, 
     place_name: String, 
     address: String, 
     city: String, 
     state: String, // abbreviations, ex: CA
     postal_code: String, // String because of zipcodes like 01678 
-    congressional: Number,
-    state_senate: Number, 
-    state_house: Number, 
+    congressional: String, // String because of congressional districts like 59B
+    state_senate: String,  // ditto
+    state_house: String,   // ditto
     deaths: Number, 
     wounded: Number, 
     location: {
