@@ -4,6 +4,9 @@ import facebookIcon from "./Icons/facebook.png";
 import emailIcon from "./Icons/gmail.png";
 import twitterIcon from "./Icons/twitter.png";
 import instagramIcon from "./Icons/instagram.png";
+import venmoIcon from "./Icons/venmo.png"
+import paypalIcon from "./Icons/paypal.png"
+
 
 function Footer() {
   return (
@@ -20,6 +23,12 @@ function Footer() {
     </li>
     <li>
     <a href="/getInvolved"><img className="icon" src={emailIcon} alt="Email"/></a>
+    </li>
+    <li>
+    <a href="https://venmo.com"><img className="icon" src={venmoIcon} alt="Venmo"/></a>
+    </li>
+    <li>
+    <a href="https://paypal.com"><img className="icon" src={paypalIcon} alt="Paypal"/></a>
     </li>
     </ul>
     <span className="copyright">Copyright © 2021 Mass Shooting Project</span>
