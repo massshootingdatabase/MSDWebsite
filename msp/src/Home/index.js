@@ -45,9 +45,17 @@ function Home() {
       <p>
       We are a volunteer organization made up of volunteers all over the United States. Many of our volunteers are students from colleges and universities across the country. No special skills are required to join our volunteer team, just a passion to end mass shootings. 
       </p>
-      
     </div>
   );
 }
+
+
+// mapboxgl.accessToken = 'pk.eyJ1IjoiaGlnZ3MzMiIsImEiOiJja3UwZnZtM2gxMDZqMnZvcXU5NHViamloIn0.KlO5rSrT27Ldm_KN6Gvobg';
+// const map = new mapboxgl.Map({
+//     container: 'map', // container ID
+//     style: 'mapbox://styles/higgs32/ckura4ful05up14o2l242fpoh', // style URL
+//     center: [-74.5, 40], // starting position [lng, lat]
+//     zoom: 9 // starting zoom
+// });
 
 export default Home
