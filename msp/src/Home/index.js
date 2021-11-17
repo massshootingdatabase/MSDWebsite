@@ -45,20 +45,6 @@ function Home() {
       <p>
       We are a volunteer organization made up of volunteers all over the United States. Many of our volunteers are students from colleges and universities across the country. No special skills are required to join our volunteer team, just a passion to end mass shootings. 
       </p>
-    <h2>About the Database</h2>
-    <p>
-        Our purpose, then official definitions used for the database
-    </p>
-    
-    <h2>Methodology</h2>
-    <p>
-        How the data is collected, then organized.
-    </p>
-    <h2>Statistics</h2>
-    
-    <p>
-       A few charts / numbers that convey why this database is important and interesting. 
-    </p>
     </div>
   );
 }
