@@ -34,13 +34,13 @@ router.post("/", (req, res) => {
             from: req.body.from, // req.body.from
             to: process.env.OUR_EMAIL,
             subject: req.body.subject, // req.body.subject
-            text: req.body.text // req.body.text
+            text: req.body.message // req.body.text
     };
     transporter.sendMail(email_data, (err, info) => {
         if (err) {
-            res.send(err);
+            console.log(error);
         } else {
-            res.send(info);
+            console.log(info);
         }
     });
 });
