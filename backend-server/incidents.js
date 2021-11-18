@@ -1,20 +1,21 @@
 // This defines a router handling all requests to api/incidents/*
-// This is done to keep index.js light as index.js is out entrance point.
+// This is done to keep index.js light as index.js is our entrance point.
 
 // libraries needed in general...
-const express = require('express');
-const mongoose = require('mongoose');
+require("dotenv").config();
+const express = require("express");
+const mongoose = require("mongoose");
 
 // Schemas needed for using Mongoose
-const incidentSchema = require('./incidentSchema');
-
-// We might need to reconnect databases...
-const SERVER = "mongodb://localhost:27017/";
-let DB = "msd";
+const incidentSchema = require("./incidentSchema");
 
 let router = express.Router();
 
-let conn = mongoose.connect(SERVER + DB); // create default connection
+console.log(process.env.DB_SERVER + process.env.DB);
+let conn = mongoose.connect(
+    process.env.DB_SERVER + process.env.DB); // create default connection
+
+
 // since we created default connection, use mongoose.model to use the default connection
 let incidentModel = mongoose.model("Incident", incidentSchema);
 
