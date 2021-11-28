@@ -6,7 +6,7 @@ import twitterIcon from "./Icons/twitter.png";
 import instagramIcon from "./Icons/instagram.png";
 import venmoIcon from "./Icons/venmo.png"
 import paypalIcon from "./Icons/paypal.png"
-
+import linkedinIcon from "./Icons/linkedin.png"
 
 function Footer() {
   return (
@@ -29,6 +29,9 @@ function Footer() {
     </li>
     <li>
     <a href="https://paypal.com"><img className="icon" src={paypalIcon} alt="Paypal"/></a>
+    </li>
+    <li>
+    <a href="https://www.linkedin.com/company/mass-shooting-database"><img className="icon" src={linkedinIcon} alt="Linkedin"/></a>
     </li>
     </ul>
     <span className="copyright">Copyright © 2021 Mass Shooting Project</span>
