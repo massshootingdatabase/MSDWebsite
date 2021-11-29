@@ -13,7 +13,7 @@ function Footer() {
     <div className="Footer">
     <ul className="FooterList">
     <li>
-      <a href="http://www.facebook.com/YOURUSERNAMEHERE"><img className="icon" src={facebookIcon} alt="Facebook"/></a>
+      <a href="https://www.facebook.com/The-Mass-Shooting-Database-102034675491329/"><img className="icon" src={facebookIcon} alt="Facebook"/></a>
     </li>
     <li>
     <a href="https://www.instagram.com/themassshootingdatabase/"><img className="icon" src={instagramIcon} alt="Instagram" /></a>
