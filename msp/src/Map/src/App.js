@@ -7,9 +7,10 @@ export default class App extends React.PureComponent {
 constructor(props) {
 super(props);
 this.state = {
-lng: -70.9,
-lat: 42.35,
-zoom: 9
+
+lng: -72.1773,
+lat: 40.9015 ,
+zoom: 5.43
 };
 this.mapContainer = React.createRef();
 }
@@ -17,7 +18,7 @@ componentDidMount() {
 const { lng, lat, zoom } = this.state;
 const map = new mapboxgl.Map({
 container: this.mapContainer.current,
-style: 'mapbox://styles/mapbox/streets-v11',
+style: 'mapbox://styles/higgs32/ckura4ful05up14o2l242fpoh',
 center: [lng, lat],
 zoom: zoom
 });

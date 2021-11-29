@@ -21,7 +21,7 @@ const NavBar = () =>{
       <NavLink activeClassName="navActive" className="navItem" to="/getInvolved">Get Involved</NavLink>
     </li>
     <li>
-      <NavLink activeClassName="navActive" className="navItem" to="/Home/stuff-for-mapbox">Map</NavLink>
+      <NavLink activeClassName="navActive" className="navItem" to="/Map/index.html">Map</NavLink>
     </li>
     </ul>
     </div>
