@@ -28,12 +28,32 @@ function checkIfNonnegativeInteger(input, valueToReturn) {
   }
   return integer;
 }
-
+// API QUERY REQUESTS
 router.get("/:gva_id(\\d+)", async (req, res) => {
   // /api/incidents/19878
   let query = await incidentModel.findOne({ gva_id: req.params.gva_id }).exec();
   res.json(query);
 });
+// CODE:MICHAEL HIGGINS
+router.get("/congressional/:congressional", async (req, res) => {
+    // http://localhost:5000/api/incidents/congressional/5
+    let query = await incidentModel.find({congressional: req.params.congressional}).exec();
+    res.json(query);
+});
+
+router.get("/stateSenate/:stateSenate", async (req, res) => {
+    // http://localhost:5000/api/incidents/stateSenate/36
+    let query = await incidentModel.find({stateSenate: req.params.stateSenate}).exec();
+    res.json(query);
+});
+
+router.get("/stateHouse/:stateHouse", async (req, res) => {
+    // http://localhost:5000/api/incidents/stateHouse/58
+    let query = await incidentModel.find({stateHouse: req.params.stateHouse}).exec();
+    res.json(query);
+});
+
+
 
 /*
 router.get("/", async (req, res) => {
