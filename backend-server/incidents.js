@@ -36,41 +36,45 @@ router.get("/", async (req, res) => {
       offset: 0
       orderby: {date: descending}
     }*/
-  let limit = checkIfNonnegativeInteger(req.query.limit, 10);
-  let offset = 0;
-
-  console.log(
-    "Query strings:",
-    req.query,
-    "Processed:",
-    setupQuery(req.query),
-    "Limit",
-    limit
-  );
+  let limit = parseInt(req.query.limit);
+  if (isNaN(limit)) {
+    limit = 10;
+  }
+  let offset = parseInt(req.query.offset);
+  if (isNaN(offset)) {
+    offset = 0;
+  }
 
   //setting project because search results are not going to show everything right away
   //adding offset for pagination purposes
-  let query = await incidentModel
+  let query = incidentModel
     .find(setupQuery(req.query), setupProject(req.query))
     .sort(setupOrderBy(req.query))
     .skip(offset)
     .limit(limit);
+  
+  console.log(query.getFilter(), query.getOptions(), query.projection());
 
-  res.json(query);
+  let results = await query.exec();
+  res.json(results);
 });
 
 
-// HELPERS DOWN HERE
-function checkIfNonnegativeInteger(input, valueToReturn) {
-  /**
-   * Returns valueToReturn if input is not a string
-   * that can be parsed into an nonnegative number.
-   */
-  let integer = parseInt(input);
-  if (isNaN(integer) || integer < 0) {
-    return valueToReturn;
+
+function createRange(min, max) {
+  let options = {};
+  let minInt = parseInt(min);
+  let maxInt = parseInt(max);
+
+  if (!isNaN(minInt)) {
+    options.$gte = minInt;
   }
-  return integer;
+
+  if (!isNaN(maxInt)) {
+    options.$lte = maxInt;
+  }
+
+  return options;
 }
 
 
@@ -81,31 +85,42 @@ function setupQuery(queryStrings) {
    */
   let findOptions = {};
   
-  // a query string param must be defined to handle it
-  // process city and state
-  if (typeof queryStrings.state === "string") {
-    findOptions.state = queryStrings.state;
-  }
-  if (typeof queryStrings.city === "string") {
-    findOptions.city = queryStrings.city;
-  }
+  // checking if the type of a query string is a string
+  // is a quick way to check if the query string param has a usable value
+  let params = ["state", "city", "congressional", "stateSenate", "stateHouse", "place_type"]
+  params.forEach(element => {
+    if (typeof queryStrings[element] === "string") {
+      findOptions[element] = queryStrings[element];
+    }
+  });
 
   // process deaths
-  findOptions.deaths = {
-    $gte: checkIfNonnegativeInteger(queryStrings.minKilled, 0),
-    $lte: checkIfNonnegativeInteger(
-      queryStrings.maxKilled,
-      Number.MAX_SAFE_INTEGER
-    ),
-  };
-  // process injured
-  findOptions.wounded = {
-    $gte: checkIfNonnegativeInteger(queryStrings.minWounded, 0),
-    $lte: checkIfNonnegativeInteger(
-      queryStrings.maxWounded,
-      Number.MAX_SAFE_INTEGER
-    ),
-  };
+  let deathRange = createRange(queryStrings.minKilled, queryStrings.maxKilled);
+  // object.keys is the way to get the length of an object
+  // we can't pass undefined, null, nan, or empty objects to an param
+  //  otherwise search fails. we only want to pass an object when we want
+  //  to do a ranged search (a min and/or max)
+  if (Object.keys(deathRange).length > 0) {
+    findOptions.deaths = deathRange;
+  }
+  // process wounded
+  let woundedRange = createRange(queryStrings.minWounded, queryStrings.maxWounded);
+  if (Object.keys(woundedRange).length > 0) {
+    findOptions.wounded = woundedRange;
+  }
+  
+  // process date
+  let dateRange = {};
+  // the createRange function doesn't work with dates...
+  if (typeof queryStrings.before === "string") {
+    dateRange.$lte = queryStrings.before;
+  }
+  if (typeof queryStrings.after === "string") {
+    dateRange.$gte = queryStrings.after;
+  }
+  if (Object.keys(dateRange).length > 0) {
+    findOptions.date = dateRange;
+  }
 
   return findOptions;
 }
@@ -113,14 +128,23 @@ function setupQuery(queryStrings) {
 function setupProject(queryStrings) {
   /**
    * Returns an filterOptions object that dictates which elements to return
-   * /api/incidents?project=gva_id,incident_name,city,state
+   * /api/incidents?include=gva_id,incident_name,city,state&exclude=_id
    */
-  if (queryStrings.project === "string") {
-    let projectOptions = {};
-    queryStrings.project.split(",").forEach(element => {projectOptions[element] = 1;});
-    return projectOptions;
-  } else {
-    return {
+ 
+  let projectOptions = {};
+
+  if (typeof queryStrings.include === "string") {
+    queryStrings.include.split(",").forEach(element => {projectOptions[element] = 1;});
+  };
+
+  if (typeof queryStrings.exclude === "string") {
+    queryStrings.exclude.split(",").forEach(element => {projectOptions[element] = 0;});
+  };
+
+  // this could only happen if include and exclude isn't provided
+  if (projectOptions.length === 0) {
+    projectOptions = {
+      _id: 1,
       gva_id: 1,
       incident_name: 1,
       city: 1,
@@ -130,6 +154,9 @@ function setupProject(queryStrings) {
       start_date: 1,
     };
   }
+    
+    return projectOptions;
+  
 }
 
 function setupOrderBy(queryStrings) {
@@ -139,9 +166,11 @@ function setupOrderBy(queryStrings) {
    * api/incidents?orderBy=gva_id1,city0
    */
   let orderBy = {};
-  queryStrings.orderBy
-    .split(",")
-    .forEach(element => {element[element.length - 1] === 1 ? projectOptions[element] = "asc" : "desc";});
+  if (typeof queryStrings.orderBy === "string") {
+    queryStrings.orderBy
+      .split(",")
+      .forEach(element => {element[element.length - 1] === 1 ? orderBy[element] = "asc" : "desc";});
+  }
   return orderBy;
 }
 
