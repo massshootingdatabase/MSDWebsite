@@ -87,7 +87,7 @@ function setupQuery(queryStrings) {
   
   // checking if the type of a query string is a string
   // is a quick way to check if the query string param has a usable value
-  let params = ["state", "city", "congressional", "stateSenate", "stateHouse", "place_type"]
+  let params = ["state", "city", "postal_code", "congressional", "stateSenate", "stateHouse", "place_type"]
   params.forEach(element => {
     if (typeof queryStrings[element] === "string") {
       findOptions[element] = queryStrings[element];
