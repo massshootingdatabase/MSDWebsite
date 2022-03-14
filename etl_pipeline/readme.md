@@ -25,9 +25,7 @@ mongoimport --db=msd --collection=incidents --drop \
 
 // allows you to quickly modify every value to date...
 // make sure you're using this in mongosh
-db.incidents.aggregate([
-    { "$set" : { "date" : { $toDate : "$date" } } }
-])
+db.incidents.updateMany({},[{ "$set" : { "date" : { $toDate : "$date"}}}])
 ```
 
 ## Incident Data
@@ -39,9 +37,7 @@ mongoimport --db=msd --collection=incidents --drop --type=json --jsonArray --fil
 
 // allows you to quickly modify every value to date...
 // make sure you're using this in mongosh
-db.incidents.aggregate([
-    { "$set" : { "date" : { $toDate : "$date" } } }
-])
+db.incidents.updateMany({},[{ "$set" : { "date" : { $toDate : "$date"}}}])
 ```
 
 
