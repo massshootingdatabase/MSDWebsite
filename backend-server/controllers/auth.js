@@ -11,10 +11,7 @@ exports.register = async (req, res, next) => {
         const admin = await Admin.create({
             email, password, current, accessLevel
         });
-        res.status(201).json({
-            success: true,
-            admin
-        });
+        sendToken(admin, 201, res);
 
     } catch (error) {
         next(error);
@@ -29,21 +26,18 @@ exports.login = async (req, res, next) => {
     }
 
     try {
-        const user = await Admin.findOne({email}).select("+password");
+        const admin = await Admin.findOne({email}).select("+password");
 
-        if(!user) {
+        if(!admin) {
             return next(new ErrorResponse("Invalid credentials", 401));
         }
 
-        const isMatch = await user.matchPasswords(password);
+        const isMatch = await admin.matchPasswords(password);
         if(!isMatch) {
             return next(new ErrorResponse("Invalid credentials", 401));
         }
 
-        res.status(201).json({
-            success: true,
-            token: "fjriuhgrfl",
-        });
+        sendToken(admin, 200, res);
 
     } catch (error) {
         next(error);
@@ -58,3 +52,10 @@ exports.resetpassword = (req, res, next) => {
     res.send("Reset password Route");
 };
 
+const sendToken = (user, statusCode, res) => {
+    const Token = user.getSignedToken();
+    res.status(statusCode).json({
+        success:true,
+        token: Token,
+    });
+}

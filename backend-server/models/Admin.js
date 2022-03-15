@@ -2,6 +2,7 @@
 const User = require("../models/User");
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
+const jwt = require('jsonwebtoken');
 
 var options = User.options;
 const adminSchema = new mongoose.Schema({
@@ -34,6 +35,14 @@ adminSchema.pre("save", async function(next) {
 
 adminSchema.methods.matchPasswords = async function(password) {
     return await bcrypt.compare(password, this.password);
+}
+
+adminSchema.methods.getSignedToken = function() {
+    return jwt.sign(
+        {id: this._id}, 
+        process.env.JWT_SECRET, 
+        {expiresIn: process.env.JWT_EXPIRE,}
+        );
 }
 
 const Admin = User.discriminator('Admin', adminSchema);
