@@ -11,8 +11,8 @@ const incidentSchema = require("./incidentSchema");
 
 let router = express.Router();
 
-console.log(process.env.DB_SERVER + process.env.DB);
-let conn = mongoose.connect(process.env.DB_SERVER + process.env.DB); // create default connection
+console.log(process.env.DB_SERVER);
+let conn = mongoose.connect(process.env.DB_SERVER); // create default connection
 
 // since we created default connection, use mongoose.model to use the default connection
 let incidentModel = mongoose.model("Incident", incidentSchema);
