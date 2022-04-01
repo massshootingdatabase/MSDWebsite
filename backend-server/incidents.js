@@ -7,7 +7,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 
 // Schemas needed for using Mongoose
-const incidentSchema = require("./incidentSchema");
+const incidentSchema = require("./models/Incidents");
 
 let router = express.Router();
 
