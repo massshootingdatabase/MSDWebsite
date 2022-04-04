@@ -1,5 +1,6 @@
 const Person = require('../models/Person');
 const mongoose = require('mongoose');
+const { Schema } = mongoose;
 
 var options = Person.options;
 

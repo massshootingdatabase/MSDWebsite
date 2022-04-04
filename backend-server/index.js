@@ -5,7 +5,7 @@ const connectDb = require('./config/db');
 const errorHandler = require('./middleware/error');
 
 // Routers needed for the server...
-let incidents = require("./incidents");
+let incidents = require("./routes/incidents");
 let email = require("./email");
 let auth = require("./routes/auth");
 let private = require("./routes/private");

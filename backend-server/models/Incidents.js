@@ -5,8 +5,12 @@ We're not making a model in here because we use the
     "export schema" pattern for multiple connection objects
 */
 const mongoose = require("mongoose");
+const { Schema } = mongoose;
 
-const incidentSchema = mongoose.Schema({
+const Shooter = require("./Shooter").schema;
+
+const incidentSchema = new Schema({
+    //_id: Schema.Types.ObjectId,
     incident_id: String, //generated
     start_date: Date, // ISO 8601 format... YYYY-MM-DDThh:mm:ssZ
     end_date: Date,
@@ -33,18 +37,20 @@ const incidentSchema = mongoose.Schema({
     }, 
 
     //linking the victims collections for each incident
-    victims: [{ 
-        type: Schema.Types.ObjectId,
-        ref: 'Person'
-    }],
+    victims: [{ type: Schema.Types.ObjectId, ref: 'Person' }],
+
+    //embedding shooters for each incident
+    shooters: [Shooter],
+
 
     sources: [
         {
+            description: String, //type of source may differ from a webpage
             url: String,
-            description: String,
         }
     ]
 });
 
 // we only are exporting the schema...
-module.exports = incidentSchema;
+const Incident = mongoose.model("Incident", incidentSchema);
+module.exports = Incident;
