@@ -70,7 +70,7 @@ const LoginScreen = ({history}) => {
                         required
                         id="password"
                         placeholder="Enter password"
-                        value={email}
+                        value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         tabIndex={2}
                         />
