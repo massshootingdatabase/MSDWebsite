@@ -1,4 +1,6 @@
 const mongoose = require("mongoose");
+const jwt = require('jsonwebtoken');
+
 
 var options =  {discriminatorKey: 'kind'};
 const userSchema = new mongoose.Schema({
@@ -14,6 +16,14 @@ const userSchema = new mongoose.Schema({
     }, 
     options
 );
+
+userSchema.methods.getSignedToken = function() {
+    return jwt.sign(
+        {id: this._id}, 
+        process.env.JWT_SECRET, 
+        {expiresIn: process.env.JWT_EXPIRE,}
+        );
+}
 
 const User = mongoose.model("User", userSchema);
 
