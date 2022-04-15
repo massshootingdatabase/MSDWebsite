@@ -1,5 +1,6 @@
 const Admin = require("../models/Admin");
 const User = require("../models/User");
+const crypto = require("crypto");
 
 const ErrorResponse = require("../utils/errorResponse");
 const sendEmail = require("../utils/sendEmail");
@@ -95,8 +96,37 @@ exports.forgotpassword = async (req, res, next) => {
     
 };
 
-exports.resetpassword = (req, res, next) => {
-    res.send("Reset password Route");
+exports.resetpassword = async (req, res, next) => {
+    // Compare token in URL params to hashed token
+    const resetPasswordToken = crypto
+    .createHash("sha256")
+    .update(req.params.resetToken)
+    .digest("hex");
+
+    try {
+        const user = await User.findOne({
+            resetPasswordToken,
+            resetPasswordExpire: { $gt: Date.now() },
+        });
+
+        if (!user) {
+            return next(new ErrorResponse("Invalid Token", 400));
+        }
+
+        user.password = req.body.password;
+        user.resetPasswordToken = undefined;
+        user.resetPasswordExpire = undefined;
+
+        await user.save();
+
+        res.status(201).json({
+            success: true,
+            data: "Password Reset Success",
+            token: user.getSignedToken(),
+        });
+    } catch (err) {
+        next(err);
+    }
 };
 
 const sendToken = (user, statusCode, res) => {
