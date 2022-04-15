@@ -29,6 +29,7 @@ function App() {
         <Route path='/getInvolved' component={GetInvolved} />
         <Route path='/Map' component={viewMap} />
         <Route exact path="/login" component={LoginScreen}/>
+        <Route exact path="/welcome" component={PrivateScreen}/>
         <Route exact path="/register" component={RegisterScreen}/>
         <Route exact path="/forgotpassword" component={ForgotPasswordScreen}/>
         <Route exact path="/passwordreset/:resetToken" component={ResetPasswordScreen}/>
