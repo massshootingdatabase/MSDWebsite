@@ -98,13 +98,10 @@ exports.forgotpassword = async (req, res, next) => {
 
 exports.resetpassword = async (req, res, next) => {
     // Compare token in URL params to hashed token
-    const resetPasswordToken = crypto
-    .createHash("sha256")
-    .update(req.params.resetToken)
-    .digest("hex");
+    const resetPasswordToken = crypto.createHash("sha256").update(req.params.resetToken).digest("hex");
 
     try {
-        const user = await User.findOne({
+        const user = await Admin.findOne({
             resetPasswordToken,
             resetPasswordExpire: { $gt: Date.now() },
         });
@@ -122,8 +119,9 @@ exports.resetpassword = async (req, res, next) => {
         res.status(201).json({
             success: true,
             data: "Password Reset Success",
-            token: user.getSignedToken(),
+            ser: user
         });
+
     } catch (err) {
         next(err);
     }
