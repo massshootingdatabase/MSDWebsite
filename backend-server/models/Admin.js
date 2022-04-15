@@ -1,4 +1,5 @@
 
+const crypto = require("crypto");
 const User = require("../models/User");
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
@@ -43,6 +44,14 @@ adminSchema.methods.getSignedToken = function() {
         process.env.JWT_SECRET, 
         {expiresIn: process.env.JWT_EXPIRE,}
         );
+}
+
+adminSchema.methods.getResetPasswordToken = function() {
+    const resetToken = crypto.randomBytes(20).toString("hex");
+    this.resetPasswordToken = crypto.createHash("sha256").update(resetToken).digest("hex");
+    this.resetPasswordExpired = Date.now() + 10 * 60 * 1000;
+
+    return resetToken;
 }
 
 const Admin = User.discriminator('Admin', adminSchema);

@@ -44,8 +44,35 @@ exports.login = async (req, res, next) => {
     }
 };
 
-exports.forgotpassword = (req, res, next) => {
-    res.send("forgot password route");
+exports.forgotpassword = async (req, res, next) => {
+    const {email} = req.body;
+    try {
+        const admin = await Admin.findOne({email});
+
+        if(!admin) {
+            return
+             next(new ErrorResponse("Email could not be sent", 404));
+        }
+
+        const resetToken = admin.getResetPasswordToken();
+
+        await admin.save();
+        
+        const resetUrl = `http://localhost:3000/passwordreset/${resetToken}`;
+
+        const message = `
+            <h1> You have requested a password reset </h1>
+            <p> Please go to this link to reset your password. </p>
+            <a href=${resetUrl} clicktracking=off> ${resetUrl} </a>
+        `
+
+        //TODO
+        //set up emailing using node mailer and sendgrid
+        
+    } catch(error) {
+        
+    }
+    
 };
 
 exports.resetpassword = (req, res, next) => {
