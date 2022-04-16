@@ -1,0 +1,36 @@
+
+.Footer {
+  margin-top:auto;
+  display: flex;
+  box-sizing: border-box;
+  width: 100%;
+  flex-direction: column;
+  bottom: 0;
+  //position: fixed;
+  padding: 20px;
+  margin: 0px;
+
+  .FooterList {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: baseline;
+    margin: 0px;
+    width: 100%;
+    padding: 0px;
+    list-style-type: none;
+  }
+
+  .copyright {
+    display: flex;
+    justify-content: center;
+    font-size: small;
+  }
+
+  .icon{
+    width: 30px;
+    padding: 4px;
+  }
+
+}
+

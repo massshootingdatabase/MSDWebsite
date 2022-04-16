@@ -75,11 +75,30 @@ exports.addShooter = async (req, res, next) => {
 };
 
 
-//link a victim (using populate aggregate funcs)
+//link a victim 
 exports.addVictim = async (req, res, next) => {
 
     const {id, name, age, gender, race, sexuality, died, knewPerp} = req.body;
 
-    //TODO
+    //create a victim 
+    try {
+        const victim = await Victim.create({
+            name, age, gender, race, sexuality, died, knewPerp
+        });
+        
+        //get the incident we are going to save a victim to       
+        const incident = await Incident.findOne({id});
+        incident.victims.push(victim._id);
+        incident.save(function (err) {
+            if (!err) console.log('Success!');
+        });
 
+        res.status(200).json({
+            success:true,
+            Incident: incident
+        });
+    }
+    catch (error) {
+        next(error);
+    }
 }

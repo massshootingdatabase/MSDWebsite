@@ -23,6 +23,9 @@ const NavBar = () =>{
     <li>
       <NavLink activeClassName="navActive" className="navItem" to="/Home/stuff-for-mapbox">Map</NavLink>
     </li>
+    <li>
+      <NavLink activeClassName="navActive" className="navItem" to="/login">Login</NavLink>
+    </li>
     </ul>
     </div>
 ) }
