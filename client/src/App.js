@@ -10,6 +10,9 @@ import LoginScreen from './components/screens/LoginScreen';
 import RegisterScreen from './components/screens/RegisterScreen';
 import ForgotPasswordScreen from './components/screens/ForgotPasswordScreen';
 import ResetPasswordScreen from './components/screens/ResetPasswordScreen';
+import Dashboard from './components/entryScreens/Dashboard'; //data entry dashboard
+import CreateIncident from './components/entryScreens/CreateIncident';
+
 import Home from './Home';
 import News from './News';
 import Data from './Data';
@@ -33,6 +36,8 @@ function App() {
         <Route exact path="/register" component={RegisterScreen}/>
         <Route exact path="/forgotpassword" component={ForgotPasswordScreen}/>
         <Route exact path="/passwordreset/:resetToken" component={ResetPasswordScreen}/>
+        <Route exact path="/dashboard" component={Dashboard}/>
+        <Route exact path="/createincident" component={CreateIncident}/>
       </Switch>
     </Router>
     <Footer />
