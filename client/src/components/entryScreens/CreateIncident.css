@@ -1,0 +1,125 @@
+.login-screen {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.login-screen__form {
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 660px;
+    padding: 1.5rem;
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+    background: #fff;
+}
+
+.login-screen__title {
+    text-align: center;
+    width:100%;
+    margin-bottom: 1rem;
+}
+
+.login-screen__forgotpassword {
+    font-size: 0.7rem;
+}
+
+.login-screen__subtext {
+    font-size: 0.7rem;
+    display: block;
+    margin: 0.5rem 0;
+}
+
+.create-form-group,
+.create-form-group label, 
+.create-form-group input {
+  width: 50%;
+  margin-bottom: 0.5rem;
+}
+
+.create-form-group input {
+    padding: 10px 20px;
+    border: none;
+    border-bottom: 3px solid transparent;
+    background-color: #eee;
+    outline-width: 0;
+    font-size: 1rem;
+  }
+.create-form-group input:focus{
+    border-bottom: 3px solid coral;
+}
+
+/*data-block*/
+
+.date-block {
+    width: 100%;
+    display:flex;
+    flex-direction: row;
+}
+.date-block label, 
+.date-block input {
+  width: 50%;
+  margin-bottom: 0.5rem;
+}
+
+.date-block input {
+    width: 80%;
+    padding: 10px 10px;
+    margin: 20px, 10px;
+    border: none;
+    border-bottom: 3px solid transparent;
+    background-color: #eee;
+    outline-width: 0;
+    font-size: 1rem;
+}
+
+.block-container {
+    width: 50%;
+}
+
+/* District Block */
+
+.district-form-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.district-form-group input {
+    width: 33%;
+    padding: 10px 10px;
+    margin: 20px, 10px;
+    border: none;
+    border-bottom: 3px solid transparent;
+    background-color: #eee;
+    outline-width: 0;
+    font-size: 1rem;
+}
+
+/* Location Block */
+
+.location-block {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.location-block label, 
+.location-block input {
+  width: 50%;
+  margin-bottom: 0.5rem;
+}
+
+.location-block input {
+    width: 80%;
+    padding: 10px 10px;
+    margin: 20px, 10px;
+    border: none;
+    border-bottom: 3px solid transparent;
+    background-color: #eee;
+    outline-width: 0;
+    font-size: 1rem;
+}
