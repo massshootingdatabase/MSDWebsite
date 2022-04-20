@@ -52,9 +52,9 @@ const CreateIncident = ({history}) => {
     };
 
     return(
-        <div className="login-screen">
-            <form onSubmit={incidentHandler} className="login-screen__form">
-                <h3 className="login-screen__title">Incident Create</h3>
+        <div className="create-screen">
+            <form onSubmit={incidentHandler} className="create-screen__form">
+                <h3 className="create-screen__title">Incident Create</h3>
                 {error && <span className="error-message">{error}</span>}
 
                 <div className="create-form-group">
