@@ -1,14 +1,12 @@
 import React from 'react';
 import "./style.scss";
 import mspBanner from "./Photos/mspBanner.png";
-
+import ContactForm from "../GetInvolved/ContactForm/index";
 
 // import axios from 'axios';
 
-
 function Home() {
   // console.log( axios.get('/api') ); // example call to api
-
   return (
     <div className="Home">
 
@@ -18,8 +16,22 @@ function Home() {
       </p>
 
       <img src={mspBanner} alt="Banner"/>
-      
-      <h2>Methodology</h2>
+
+      <h3>Who we are.</h3>
+      <p>
+        We are a volunteer organization made up of volunteers all over the United States. Many of our volunteers are students from colleges and universities across the country. No special skills are required to join our volunteer team, just a passion to end mass shootings. 
+      </p>
+
+      <div classsName="contact-block">
+        <h3>Want to get involved?</h3>
+        <ContactForm/>
+      </div>
+    </div>
+  );
+}
+/* Omitted Information
+
+        <h2>Methodology</h2>
       <p>
           How the data is collected, then organized.
       </p>
@@ -41,13 +53,8 @@ function Home() {
       There are many definitions of “mass shooting”. Mass Shooting Database defines a mass shooting as any shooting incident in which at least one is killed and at least three are killed or injured, excluding the perpetrator. One characteristic that will make Mass Shooting Database unique is the ability for the user to filter search results by various definition. 
       </p>
 
-      <h3>Who is Mass Shooting Database?</h3>
-      <p>
-      We are a volunteer organization made up of volunteers all over the United States. Many of our volunteers are students from colleges and universities across the country. No special skills are required to join our volunteer team, just a passion to end mass shootings. 
-      </p>
-    </div>
-  );
-}
+
+*/
 
 
 // mapboxgl.accessToken = 'pk.eyJ1IjoiaGlnZ3MzMiIsImEiOiJja3UwZnZtM2gxMDZqMnZvcXU5NHViamloIn0.KlO5rSrT27Ldm_KN6Gvobg';
