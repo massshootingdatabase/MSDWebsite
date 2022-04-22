@@ -119,7 +119,7 @@ exports.resetpassword = async (req, res, next) => {
         res.status(201).json({
             success: true,
             data: "Password Reset Success",
-            ser: user
+            user: user
         });
 
     } catch (err) {
