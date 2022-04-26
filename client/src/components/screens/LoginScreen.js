@@ -39,7 +39,6 @@ const LoginScreen = ({history}) => {
                 setError("");
             }, 5000);
         }
-
     };
 
     return(
