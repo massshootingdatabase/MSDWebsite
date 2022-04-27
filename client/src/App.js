@@ -13,6 +13,7 @@ import ResetPasswordScreen from './components/screens/ResetPasswordScreen';
 import Dashboard from './components/entryScreens/Dashboard'; //data entry dashboard
 import CreateIncident from './components/entryScreens/CreateIncident';
 
+import Signup from './components/newsletter/Signup';
 import Home from './Home';
 import News from './News';
 import Data from './Data';
@@ -20,9 +21,14 @@ import GetInvolved from './GetInvolved';
 import NavBar from './NavBar';
 import Footer from './Footer';
 import viewMap from "./Map";
+import { ReactNotifications } from 'react-notifications-component'
+import 'react-notifications-component/dist/theme.css'
+
+
 function App() {
   return (
     <div className="app">
+    <ReactNotifications/>
     <Router>
       <NavBar />
       <Switch>
@@ -38,6 +44,7 @@ function App() {
         <Route exact path="/passwordreset/:resetToken" component={ResetPasswordScreen}/>
         <Route exact path="/dashboard" component={Dashboard}/>
         <Route exact path="/createincident" component={CreateIncident}/>
+        <Route exact path="/signup" component={Signup}/>
       </Switch>
     </Router>
     <Footer />
