@@ -2,6 +2,7 @@ import {useState, useEffect} from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
 import "./CreateIncident.css";
+import { generateText, validateInput, createElement } from './utils';
 
 const CreateIncident = ({history}) => {
     const [incidentId, setIncidentId] = useState(""); //gva id optional
@@ -85,16 +86,20 @@ const CreateIncident = ({history}) => {
         const newList = sources.concat({url:url, title:title})
         setSources(newList);
 
+        const sourceList = document.querySelector('.source-list');
+        const outputText = generateText(url, title);
+        const element = createElement('li', outputText, 'source-item');
+        sourceList.appendChild(element);
+
         setUrl("");
         setTitle("");
-        
         console.log(sources);
-    }
+    };
 
     return(
         <div className="create-screen">
             <form onSubmit={incidentHandler} className="create-screen__form">
-                <h3 className="create-screen__title">Incident Create</h3>
+                <h1 className="create-screen__title">Incident Create</h1>
                 {error && <span className="error-message">{error}</span>}
 
                 <div className="create-form-group">
@@ -108,7 +113,8 @@ const CreateIncident = ({history}) => {
                         tabIndex={1}
                         />
                 </div>
-                <div className="date-block">
+                <h3 style={{paddingTop : '2ch'}}> Dates </h3>
+                <div className="create-form-group date">
                     <div className="block-container">
                         <label htmlFor="start_date">Start Date</label>
                         <input
@@ -134,8 +140,9 @@ const CreateIncident = ({history}) => {
                             />
                     </div>
                 </div>
-                <div className="date-block">
-                    <label htmlFor="deaths">Number of deaths:</label>
+                <h3 style={{paddingTop : '2ch'}}> Casualties </h3>
+                <div className="create-form-group casualties">
+                    <label htmlFor="deaths">Deaths:</label>
                     <input
                         type="deaths"
                         required
@@ -145,7 +152,7 @@ const CreateIncident = ({history}) => {
                         onChange={(e) => setDeaths(e.target.value)}
                         tabIndex={4}
                         />
-                    <label htmlFor="wounded">Number of injuries
+                    <label htmlFor="wounded">Wounded:
                     </label>
                     <input
                         type="wounded"
@@ -157,27 +164,26 @@ const CreateIncident = ({history}) => {
                         tabIndex={5}
                         />
                 </div>
-                <div>
-                    <label htmlFor="types">Incident Type[s]:</label>
+                <h3 style={{paddingTop : '2ch'}}> Incident Type[s] </h3>
+                <div className="create-form-group type">
                     <input type="checkbox" id="homicide" name="homicide" value="homicide"/>
-                    <label for="homicide"> Homicide</label>
+                    <label htmlFor="homicide"> Homicide</label>
                     <input type="checkbox" id="murder-suicide" name="murder-suicide" value="murder-suicide"/>
-                    <label for="murder-suicide"> Murder-Suicide</label>
+                    <label htmlFor="murder-suicide"> Murder-Suicide</label>
                     <input type="checkbox" id="terrorism" name="terrorism" value="terrorism"/>
-                    <label for="terrorism"> Terrorism </label>
+                    <label htmlFor="terrorism"> Terrorism </label>
                     <input type="checkbox" id="domestic violence" name="domestic violence" value="domestic violence"/>
-                    <label for="domestic violence"> Domestic Violence </label>
+                    <label htmlFor="domestic violence"> Domestic Violence </label>
                     <input type="checkbox" id="gang violence" name="gang violence" value="gang violence"/>
-                    <label for="gang violence"> Gang Violence </label>
+                    <label htmlFor="gang violence"> Gang Violence </label>
                     <input type="checkbox" id="burglary" name="burglary" value="burglary"/>
-                    <label for="burglary"> Burglary</label>
+                    <label htmlFor="burglary"> Burglary</label>
                     <input type="checkbox" id="school shooting" name="school shooting" value="school shooting"/>
-                    <label for="school shooting"> School Shooting </label>
+                    <label htmlFor="school shooting"> School Shooting </label>
                 </div>
                 <br/>
-                <div>
-                    <label htmlFor="description">Incident Description
-                    </label>
+                <h3 style={{paddingTop : '2ch'}}> Incident Description </h3>
+                <div className="create-form-group description">
                     <input className='description-input'
                         type="description"
                         required
@@ -188,11 +194,8 @@ const CreateIncident = ({history}) => {
                         tabIndex={5}
                         />
                 </div>
-                <div className="create-form-group">
-                    <label htmlFor="congressional">Districts
-                    </label>
-                </div>
-                <div className="district-form-group">
+                <h3 style={{paddingTop : '2ch'}}> Districts </h3>
+                <div className="create-form-group district">
                     <input
                         type="congressional"
                         id="congressional"
@@ -219,7 +222,7 @@ const CreateIncident = ({history}) => {
                         />
                 </div>
                 <h3 style={{paddingTop : '2ch'}}> Location </h3>
-                <div className="location-block">
+                <div className="create-form-group location">
                     
                     <div className="block-container">
                         <label htmlFor="address">Address
@@ -364,9 +367,9 @@ const CreateIncident = ({history}) => {
                     </div>
                 
                 </div>
-                <div className="source-block">
-                    <label htmlFor="sources">Source
-                    </label>
+                <h3 style={{paddingTop : '2ch'}}> Sources </h3>
+                <div className="create-form-group source">
+
                     <input
                         type="url"
                         required
@@ -387,6 +390,11 @@ const CreateIncident = ({history}) => {
                         />
                     <button type="button" onClick={addSrc}>Add Another Source</button>
                 </div>
+                <section className="source-output">
+                        <ul className="source-list"></ul>
+                </section>
+
+
                 <button type="submit" className="btn btn-primary" tabIndex={4}>
                     Create
                 </button>

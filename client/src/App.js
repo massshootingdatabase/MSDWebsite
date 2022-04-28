@@ -30,6 +30,7 @@ function App() {
     <ReactNotifications/>
     <Router>
       <NavBar />
+      <div className="content">
       <Switch>
         <Route path='/' exact component={Home} />
         <Route path='/data' component={Data} />
@@ -45,6 +46,8 @@ function App() {
         <Route exact path="/createincident" component={CreateIncident}/>
         <Route exact path="/signup" component={Signup}/>
       </Switch>
+      </div> 
+      
     </Router>
     <Footer />
     </div>
