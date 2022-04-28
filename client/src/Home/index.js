@@ -1,12 +1,18 @@
 import React from 'react';
+import { useState } from 'react';
 import "./style.scss";
 import mspBanner from "./Photos/mspBanner.png";
-import ContactForm from "../GetInvolved/ContactForm/index";
 
 // import axios from 'axios';
 
-function Home() {
+function Home({history}) {
   // console.log( axios.get('/api') ); // example call to api
+  const[error, setError] = useState("");
+
+  const subscribe = () => {
+    history.push("/signup");
+  }
+
   return (
     <div className="Home">
 
@@ -22,9 +28,10 @@ function Home() {
         We are a volunteer organization made up of volunteers all over the United States. Many of our volunteers are students from colleges and universities across the country. No special skills are required to join our volunteer team, just a passion to end mass shootings. 
       </p>
 
-      <div classsName="contact-block">
-        <h3>Want to get involved?</h3>
-        <ContactForm/>
+      <div className="subscribe">
+        <h5 className='dashboard-title'> Subscribe to our newsletter to stay up to date with the orgnaization's latest! </h5>
+        <hr></hr>
+        <button className='subscribe-btn' onClick={subscribe}>Subscribe</button>            
       </div>
     </div>
   );

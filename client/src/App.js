@@ -12,7 +12,6 @@ import ForgotPasswordScreen from './components/screens/ForgotPasswordScreen';
 import ResetPasswordScreen from './components/screens/ResetPasswordScreen';
 import Dashboard from './components/entryScreens/Dashboard'; //data entry dashboard
 import CreateIncident from './components/entryScreens/CreateIncident';
-
 import Signup from './components/newsletter/Signup';
 import Home from './Home';
 import News from './News';
