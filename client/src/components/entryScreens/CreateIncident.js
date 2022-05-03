@@ -80,6 +80,8 @@ const CreateIncident = ({history}) => {
 
         const sources = getSourceList();
 
+        console.log(sources);
+        /*
         try {
             const { data } = await axios.post(
                 "/api/incidents/create",
@@ -120,7 +122,7 @@ const CreateIncident = ({history}) => {
             setTimeout(() =>{
                 setError("");
             }, 5000);
-        }
+        }*/
 
     };
     
@@ -136,14 +138,17 @@ const CreateIncident = ({history}) => {
     };
 
     const getSourceList = () => {
-        const list = []
+        let list = []
         const sourceList = document.querySelector('.source-list');
         var items = sourceList.getElementsByTagName("li");
         for (var i = 0; i < items.length; ++i) {
             const myArray = items[i].textContent.split(", ");
-            let u = myArray[0];
-            let t = myArray[1];
-            list.concat({url: url, title: t});
+            let u = myArray[1];
+            let t = myArray[0];
+            list = list.concat({url: u, title: t});
+        }
+        if(url!== "") {
+            list = list.concat({url:url, title:title});
         }
         return list;
     }
