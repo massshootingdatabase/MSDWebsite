@@ -11,10 +11,19 @@ const CreateIncident = ({history}) => {
     const [deaths, setDeaths] = useState("");
     const [wounded, setWounded] = useState("");
     const [description, setDescription] = useState("");
-    const [types, setTypes] = useState([]);
+    
+    //types
+    const [incidentType, setIncidentType] = useState({
+        homicide: false,
+        murderSuicide: false,
+        terrorism: false,
+        domesticViolence: false,
+        gangViolence: false,
+        burglary: false,
+        schoolShooting: false
+    })
 
     //sources
-    const [sources, setSources] = useState([]);
     const [url, setUrl] = useState("");
     const [title, setTitle] = useState("");
     
@@ -64,6 +73,10 @@ const CreateIncident = ({history}) => {
             },
         };
 
+        const types = getTypes();
+
+        const sources = getSourceList();
+
         try {
             const { data } = await axios.post(
                 "/api/incidents/create",
@@ -80,21 +93,41 @@ const CreateIncident = ({history}) => {
         }
 
     };
+    
 
     const addSrc = (e) => {
-        e.preventDefault();
-        const newList = sources.concat({url:url, title:title})
-        setSources(newList);
-
+        //e.preventDefault();
         const sourceList = document.querySelector('.source-list');
         const outputText = generateText(url, title);
         const element = createElement('li', outputText, 'source-item');
         sourceList.appendChild(element);
-
         setUrl("");
         setTitle("");
-        console.log(sources);
     };
+
+    const getSourceList = () => {
+        const list = []
+        const sourceList = document.querySelector('.source-list');
+        var items = sourceList.getElementsByTagName("li");
+        for (var i = 0; i < items.length; ++i) {
+            const myArray = items[i].textContent.split(", ");
+            let u = myArray[0];
+            let t = myArray[1];
+            list.concat({url: url, title: t});
+        }
+        return list;
+    }
+
+    const getTypes = () => {
+        let checkArray = [];
+        for (var key in incidentType) {
+            if (incidentType[key] === true) {
+                checkArray.push(key.toString());
+            }
+        }
+        console.log(checkArray);
+        return checkArray;
+    }
 
     return(
         <div className="create-screen">
@@ -121,7 +154,7 @@ const CreateIncident = ({history}) => {
                             <label htmlFor="start_date">Start Date: </label>
                             <input
                                 type="start_date"
-                                required
+                                //required
                                 id="start_date"
                                 placeholder="eg. 2019-12-28T09:53Z"
                                 value={start_date}
@@ -133,7 +166,7 @@ const CreateIncident = ({history}) => {
                             <label htmlFor="end_date">End Date: </label>
                             <input
                                 type="end_date"
-                                required
+                                //required
                                 id="end_date"
                                 placeholder="eg. 2019-12-28T09:53Z"
                                 value={end_date}
@@ -150,7 +183,7 @@ const CreateIncident = ({history}) => {
                         <label htmlFor="deaths">Deaths:</label>
                         <input
                             type="deaths"
-                            required
+                            //required
                             id="deaths"
                             placeholder="eg. 5"
                             value={deaths}
@@ -161,7 +194,7 @@ const CreateIncident = ({history}) => {
                         </label>
                         <input
                             type="wounded"
-                            required
+                            //required
                             id="wounded"
                             placeholder="eg. 2"
                             value={wounded}
@@ -174,19 +207,48 @@ const CreateIncident = ({history}) => {
                 <div className="create-form-group">
                     <h3 style={{paddingTop : '2ch'}}> Incident Type[s] </h3>
                     <div className="type">
-                        <input type="checkbox" id="homicide" name="homicide" value="homicide"/>
+                        <input type="checkbox" id="homicide" name="homicide" onChange={ () => {
+                            incidentType.homicide=!incidentType.homicide;
+                            setIncidentType(incidentType);
+                            console.log(incidentType);
+                        }
+                            }/>
                         <label htmlFor="homicide"> Homicide</label>
-                        <input type="checkbox" id="murder-suicide" name="murder-suicide" value="murder-suicide"/>
+                        <input type="checkbox" id="murder-suicide" name="murder-suicide" onChange={()=>{
+                            incidentType.murderSuicide=!incidentType.murderSuicide;
+                            setIncidentType(incidentType);
+                            console.log(incidentType);
+                        }}/>
                         <label htmlFor="murder-suicide"> Murder-Suicide</label>
-                        <input type="checkbox" id="terrorism" name="terrorism" value="terrorism"/>
+                        <input type="checkbox" id="terrorism" name="terrorism" onChange={()=>{
+                            incidentType.terrorism=!incidentType.terrorism;
+                            setIncidentType(incidentType);
+                            console.log(incidentType);
+                        }}/>
                         <label htmlFor="terrorism"> Terrorism </label>
-                        <input type="checkbox" id="domestic violence" name="domestic violence" value="domestic violence"/>
+                        <input type="checkbox" id="domestic violence" name="domestic violence" onChange={()=>{
+                            incidentType.domesticViolence=!incidentType.domesticViolence;
+                            setIncidentType(incidentType);
+                            console.log(incidentType);
+                        }}/>
                         <label htmlFor="domestic violence"> Domestic Violence </label>
-                        <input type="checkbox" id="gang violence" name="gang violence" value="gang violence"/>
+                        <input type="checkbox" id="gang violence" name="gang violence" onChange={()=>{
+                            incidentType.gangViolence=!incidentType.gangViolence;
+                            setIncidentType(incidentType);
+                            console.log(incidentType);
+                        }}/>
                         <label htmlFor="gang violence"> Gang Violence </label>
-                        <input type="checkbox" id="burglary" name="burglary" value="burglary"/>
+                        <input type="checkbox" id="burglary" name="burglary" onChange={()=>{
+                            incidentType.burglary=!incidentType.burglary;
+                            setIncidentType(incidentType);
+                            console.log(incidentType);
+                        }}/>
                         <label htmlFor="burglary"> Burglary</label>
-                        <input type="checkbox" id="school shooting" name="school shooting" value="school shooting"/>
+                        <input type="checkbox" id="school shooting" name="school shooting" onChange={()=>{
+                            incidentType.schoolShooting=!incidentType.schoolShooting;
+                            setIncidentType(incidentType);
+                            console.log(incidentType);
+                        }}/>
                         <label htmlFor="school shooting"> School Shooting </label>
                     </div>
                 </div>
@@ -196,7 +258,7 @@ const CreateIncident = ({history}) => {
                     <div className='description'>
                         <input className='description-input'
                             type="description"
-                            required
+                            //required
                             id="description"
                             placeholder="incident name, 'shooter walked up and ..' "
                             value={description}
@@ -246,7 +308,7 @@ const CreateIncident = ({history}) => {
                             </label>
                             <input
                                 type="address"
-                                required
+                                //required
                                 id="address"
                                 placeholder="street address"
                                 value={address}
@@ -259,7 +321,7 @@ const CreateIncident = ({history}) => {
                             </label>
                             <input
                                 type="city"
-                                required
+                                //required
                                 id="city"
                                 placeholder="eg. Los Angeles"
                                 value={city}
@@ -329,7 +391,7 @@ const CreateIncident = ({history}) => {
                             </label>
                             <input
                                 type="postalCode"
-                                required
+                                //required
                                 id="postalCode"
                                 placeholder="eg. 91790"
                                 value={postalCode}
@@ -365,7 +427,7 @@ const CreateIncident = ({history}) => {
                             </label>
                             <input
                                 type="lat"
-                                required
+                                //required
                                 id="lat"
                                 placeholder="latitude"
                                 value={lat}
@@ -374,7 +436,7 @@ const CreateIncident = ({history}) => {
                                 />
                             <input
                                 type="long"
-                                required
+                                //required
                                 id="long"
                                 placeholder="longitude"
                                 value={long}
@@ -391,7 +453,7 @@ const CreateIncident = ({history}) => {
                     <div className="source">
                         <input
                             type="url"
-                            required
+                            //required
                             id="url"
                             placeholder="url"
                             value={url}
@@ -400,7 +462,7 @@ const CreateIncident = ({history}) => {
                             />
                         <input
                             type="title"
-                            required
+                            //required
                             id="title"
                             placeholder="title"
                             value={title}
