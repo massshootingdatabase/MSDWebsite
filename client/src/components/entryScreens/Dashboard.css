@@ -1,10 +1,18 @@
-.dashboard-container {
+.dashboard {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    height:50ch;
+    background-color: whitesmoke;
+}
+
+.dashboard-container {
+    width: 380px;
+    padding: 1.5rem;
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+    background: #fff;
     text-align: center;
-    height: 200px;
-    width: 300px;
 }
 
 .container hr {

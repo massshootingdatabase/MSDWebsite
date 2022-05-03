@@ -25,13 +25,15 @@ const Dashboard = ({history}) => {
     return error ?(
         <span className="error-message">{error}</span> 
     ) : (
-        <>
-        <h1 className='dashboard-title'> Data Entry Dashboard </h1>
-        <div className='dashboard-container'>
-            <hr></hr>
-            <button className='btn btn-primary' onClick={incident}>+ Create Incident</button>            
+        <div className='dashboard'>
+            <div className='dashboard-container'>
+                <h2 > Data Entry Dashboard </h2>
+                <div >
+                    <hr></hr>
+                    <button className='btn btn-primary' onClick={incident}>+ Create Incident</button>            
+                </div>
+            </div>
         </div>
-        </>
         
     );
 };

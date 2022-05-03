@@ -17,11 +17,7 @@ function Home({history}) {
     <div className="Home">
 
       <h1>Welcome to Mass Shooting Database</h1>
-      <p>
-      Mass Shooting Database is a nonpartisan, nonprofit organization committed to creating a comprehensive database of mass shootings in the United States. 
-      </p>
-
-      <img src={mspBanner} alt="Banner"/>
+      <img className="banner" src={mspBanner} alt="Banner"/>
 
       <h3>Who we are.</h3>
       <p>
@@ -29,7 +25,7 @@ function Home({history}) {
       </p>
 
       <div className="subscribe">
-        <h5 className='dashboard-title'> Subscribe to our newsletter to stay up to date with the orgnaization's latest! </h5>
+        <h4 className='dashboard-title'> Subscribe to our newsletter to stay up to date with the orgnaization's latest! </h4>
         <hr></hr>
         <button className='subscribe-btn' onClick={subscribe}>Subscribe</button>            
       </div>
