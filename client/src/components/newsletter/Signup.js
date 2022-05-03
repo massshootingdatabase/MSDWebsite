@@ -33,13 +33,13 @@ const Signup = ({history}) => {
             Store.addNotification({
                 title: "Thank you for signing up for our newsletter!",
                 message: "Please complete the process by confirming the subscription in your email inbox.",
-                type: "success",
+                type: "danger",
                 insert: "top",
                 container: "top-right",
                 animationIn: ["animate__animated", "animate__fadeIn"],
                 animationOut: ["animate__animated", "animate__fadeOut"],
                 dismiss: {
-                  duration: 10000
+                  duration: 5000
                 }
               });
 

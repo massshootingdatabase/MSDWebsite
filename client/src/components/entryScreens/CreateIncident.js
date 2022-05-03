@@ -3,6 +3,9 @@ import axios from 'axios';
 import {Link} from 'react-router-dom';
 import "./CreateIncident.css";
 import { generateText, validateInput, createElement } from './utils';
+import { Store } from 'react-notifications-component';
+import 'react-notifications-component/dist/theme.css';
+import 'animate.css';
 
 const CreateIncident = ({history}) => {
     const [incidentId, setIncidentId] = useState(""); //gva id optional
@@ -33,7 +36,7 @@ const CreateIncident = ({history}) => {
     const [house, setHouse] = useState("");
 
     //location
-    const [placeType, setPlaceType] = useState("");
+    const [placeType, setPlaceType] = useState("residence"); //initialized to residential 
     const [lat, setLat] = useState("");
     const [long, setLong] = useState("");
     const [address, setAddress] = useState("");
@@ -83,10 +86,37 @@ const CreateIncident = ({history}) => {
                 { start_date, end_date, deaths, wounded, types, description, districts, location, sources},
                 config
             );
+            
+            console.log(data);
 
             history.push("/dashboard");
+            Store.addNotification({
+                title: "Incident Created!",
+                //message: "Insertion success. Add another .",
+                type: "success",
+                insert: "top",
+                container: "top-right",
+                animationIn: ["animate__animated", "animate__fadeIn"],
+                animationOut: ["animate__animated", "animate__fadeOut"],
+                dismiss: {
+                  duration: 5000
+                }
+              });
+
         } catch (error) {
             setError(error.response.data.error);
+            Store.addNotification({
+                title: "Error",
+                message: "Oops, something went wrong. Please try recreating the incident.",
+                type: "success",
+                insert: "top",
+                container: "top-right",
+                animationIn: ["animate__animated", "animate__fadeIn"],
+                animationOut: ["animate__animated", "animate__fadeOut"],
+                dismiss: {
+                  duration: 5000
+                }
+              });
             setTimeout(() =>{
                 setError("");
             }, 5000);
