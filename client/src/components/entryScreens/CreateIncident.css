@@ -9,11 +9,14 @@
 }
 
 .create-screen__form {
-    display:block;
+    display:flex;
+    flex-direction: column;
     width:auto;
     padding: 1.5rem;
     box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
     background: #fff;
+    text-align: center;
+    align-items: center;
 }
 
 .create-screen__title {
@@ -23,9 +26,11 @@
 }
 
 .create-form-group {
-    border: 3px solid navajowhite;
     width: 100%;
     text-align: center;
+    padding: 1.5rem;
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+    background: #fff;
 }
 .create-form-group,
 .create-form-group label, 
@@ -58,7 +63,7 @@
 .casualties {
     width: 100%;
     display:flex;
-    flex-direction: row;
+    flex-direction: column;
 }
 .date label, 
 .date input,
@@ -70,7 +75,7 @@
 
 .date input
 .casualties input {
-    width: 80%;
+    width: 70%;
     padding: 10px 10px;
     margin: 20px, 10px;
     border: none;
@@ -120,6 +125,7 @@
     flex-wrap: wrap;
     align-items: center;
     padding: 1ch;
+    
 }
 
 .location label, 

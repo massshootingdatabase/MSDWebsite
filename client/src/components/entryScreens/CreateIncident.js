@@ -113,89 +113,103 @@ const CreateIncident = ({history}) => {
                         tabIndex={1}
                         />
                 </div>
-                <h3 style={{paddingTop : '2ch'}}> Dates </h3>
-                <div className="create-form-group date">
-                    <div className="block-container">
-                        <label htmlFor="start_date">Start Date</label>
-                        <input
-                            type="start_date"
-                            required
-                            id="start_date"
-                            placeholder="eg. 2019-12-28T09:53Z"
-                            value={start_date}
-                            onChange={(e) => setStartDate(e.target.value)}
-                            tabIndex={2}
-                            />
+                
+                <div className="create-form-group">
+                    <h3 style={{paddingTop : '2ch'}}> Dates </h3>
+                    <div className="date">
+                        <div className="block-container">
+                            <label htmlFor="start_date">Start Date: </label>
+                            <input
+                                type="start_date"
+                                required
+                                id="start_date"
+                                placeholder="eg. 2019-12-28T09:53Z"
+                                value={start_date}
+                                onChange={(e) => setStartDate(e.target.value)}
+                                tabIndex={2}
+                                />
+                        </div>
+                        <div className="block-container">
+                            <label htmlFor="end_date">End Date: </label>
+                            <input
+                                type="end_date"
+                                required
+                                id="end_date"
+                                placeholder="eg. 2019-12-28T09:53Z"
+                                value={end_date}
+                                onChange={(e) => setEndDate(e.target.value)}
+                                tabIndex={3}
+                                />
+                        </div>
                     </div>
-                    <div className="block-container">
-                        <label htmlFor="end_date">End Date</label>
+                </div>
+                
+                <div className="create-form-group">
+                    <h3 style={{paddingTop : '2ch'}}> Casualties </h3>
+                    <div className="casualties">
+                        <label htmlFor="deaths">Deaths:</label>
                         <input
-                            type="end_date"
+                            type="deaths"
                             required
-                            id="end_date"
-                            placeholder="eg. 2019-12-28T09:53Z"
-                            value={end_date}
-                            onChange={(e) => setEndDate(e.target.value)}
-                            tabIndex={3}
+                            id="deaths"
+                            placeholder="eg. 5"
+                            value={deaths}
+                            onChange={(e) => setDeaths(e.target.value)}
+                            tabIndex={4}
+                            />
+                        <label htmlFor="wounded">Wounded:
+                        </label>
+                        <input
+                            type="wounded"
+                            required
+                            id="wounded"
+                            placeholder="eg. 2"
+                            value={wounded}
+                            onChange={(e) => setWounded(e.target.value)}
+                            tabIndex={5}
                             />
                     </div>
                 </div>
-                <h3 style={{paddingTop : '2ch'}}> Casualties </h3>
-                <div className="create-form-group casualties">
-                    <label htmlFor="deaths">Deaths:</label>
-                    <input
-                        type="deaths"
-                        required
-                        id="deaths"
-                        placeholder="eg. 5"
-                        value={deaths}
-                        onChange={(e) => setDeaths(e.target.value)}
-                        tabIndex={4}
-                        />
-                    <label htmlFor="wounded">Wounded:
-                    </label>
-                    <input
-                        type="wounded"
-                        required
-                        id="wounded"
-                        placeholder="eg. 2"
-                        value={wounded}
-                        onChange={(e) => setWounded(e.target.value)}
-                        tabIndex={5}
-                        />
-                </div>
-                <h3 style={{paddingTop : '2ch'}}> Incident Type[s] </h3>
-                <div className="create-form-group type">
-                    <input type="checkbox" id="homicide" name="homicide" value="homicide"/>
-                    <label htmlFor="homicide"> Homicide</label>
-                    <input type="checkbox" id="murder-suicide" name="murder-suicide" value="murder-suicide"/>
-                    <label htmlFor="murder-suicide"> Murder-Suicide</label>
-                    <input type="checkbox" id="terrorism" name="terrorism" value="terrorism"/>
-                    <label htmlFor="terrorism"> Terrorism </label>
-                    <input type="checkbox" id="domestic violence" name="domestic violence" value="domestic violence"/>
-                    <label htmlFor="domestic violence"> Domestic Violence </label>
-                    <input type="checkbox" id="gang violence" name="gang violence" value="gang violence"/>
-                    <label htmlFor="gang violence"> Gang Violence </label>
-                    <input type="checkbox" id="burglary" name="burglary" value="burglary"/>
-                    <label htmlFor="burglary"> Burglary</label>
-                    <input type="checkbox" id="school shooting" name="school shooting" value="school shooting"/>
-                    <label htmlFor="school shooting"> School Shooting </label>
+                
+                <div className="create-form-group">
+                    <h3 style={{paddingTop : '2ch'}}> Incident Type[s] </h3>
+                    <div className="type">
+                        <input type="checkbox" id="homicide" name="homicide" value="homicide"/>
+                        <label htmlFor="homicide"> Homicide</label>
+                        <input type="checkbox" id="murder-suicide" name="murder-suicide" value="murder-suicide"/>
+                        <label htmlFor="murder-suicide"> Murder-Suicide</label>
+                        <input type="checkbox" id="terrorism" name="terrorism" value="terrorism"/>
+                        <label htmlFor="terrorism"> Terrorism </label>
+                        <input type="checkbox" id="domestic violence" name="domestic violence" value="domestic violence"/>
+                        <label htmlFor="domestic violence"> Domestic Violence </label>
+                        <input type="checkbox" id="gang violence" name="gang violence" value="gang violence"/>
+                        <label htmlFor="gang violence"> Gang Violence </label>
+                        <input type="checkbox" id="burglary" name="burglary" value="burglary"/>
+                        <label htmlFor="burglary"> Burglary</label>
+                        <input type="checkbox" id="school shooting" name="school shooting" value="school shooting"/>
+                        <label htmlFor="school shooting"> School Shooting </label>
+                    </div>
                 </div>
                 <br/>
-                <h3 style={{paddingTop : '2ch'}}> Incident Description </h3>
-                <div className="create-form-group description">
-                    <input className='description-input'
-                        type="description"
-                        required
-                        id="description"
-                        placeholder="incident name, 'shooter walked up and ..' "
-                        value={description}
-                        onChange={(e) => setDescription(e.target.value)}
-                        tabIndex={5}
-                        />
+                <div className="create-form-group">
+                    <h3 style={{paddingTop : '2ch'}}> Incident Description </h3>
+                    <div className='description'>
+                        <input className='description-input'
+                            type="description"
+                            required
+                            id="description"
+                            placeholder="incident name, 'shooter walked up and ..' "
+                            value={description}
+                            onChange={(e) => setDescription(e.target.value)}
+                            tabIndex={5}
+                            />
+                    </div>
+                    
                 </div>
-                <h3 style={{paddingTop : '2ch'}}> Districts </h3>
-                <div className="create-form-group district">
+                
+                <div className="create-form-group">
+                    <h3 style={{paddingTop : '2ch'}}> Districts </h3>
+                    <div className='district'>
                     <input
                         type="congressional"
                         id="congressional"
@@ -220,186 +234,191 @@ const CreateIncident = ({history}) => {
                         onChange={(e) => setHouse(e.target.value)}
                         tabIndex={8}
                         />
-                </div>
-                <h3 style={{paddingTop : '2ch'}}> Location </h3>
-                <div className="create-form-group location">
+                    </div>
                     
-                    <div className="block-container">
-                        <label htmlFor="address">Address
-                        </label>
-                        <input
-                            type="address"
-                            required
-                            id="address"
-                            placeholder="street address"
-                            value={address}
-                            onChange={(e) => setAddress(e.target.value)}
-                            tabIndex={9}
-                            />
+                </div>
+                
+                <div className="create-form-group">
+                    <h3 style={{paddingTop : '2ch'}}> Location </h3>
+                    <div className='location'>
+                        <div className="block-container">
+                            <label htmlFor="address">Address
+                            </label>
+                            <input
+                                type="address"
+                                required
+                                id="address"
+                                placeholder="street address"
+                                value={address}
+                                onChange={(e) => setAddress(e.target.value)}
+                                tabIndex={9}
+                                />
+                        </div>
+                        <div className="block-container">
+                            <label htmlFor="city">City
+                            </label>
+                            <input
+                                type="city"
+                                required
+                                id="city"
+                                placeholder="eg. Los Angeles"
+                                value={city}
+                                onChange={(e) => setCity(e.target.value)}
+                                tabIndex={10}
+                                />
+                        </div>
+                        <div className="block-container">
+                            <label htmlFor="state">State
+                            </label>
+                            <select type="state" required id="state" onChange={(e) => setState(e.target.value)} tabIndex={11}>
+                                <option value="AL">Alabama</option>
+                                <option value="AK">Alaska</option>
+                                <option value="AZ">Arizona</option>
+                                <option value="AR">Arkansas</option>
+                                <option value="CA">California</option>
+                                <option value="CO">Colorado</option>
+                                <option value="CT">Connecticut</option>
+                                <option value="DE">Delaware</option>
+                                <option value="DC">District Of Columbia</option>
+                                <option value="FL">Florida</option>
+                                <option value="GA">Georgia</option>
+                                <option value="HI">Hawaii</option>
+                                <option value="ID">Idaho</option>
+                                <option value="IL">Illinois</option>
+                                <option value="IN">Indiana</option>
+                                <option value="IA">Iowa</option>
+                                <option value="KS">Kansas</option>
+                                <option value="KY">Kentucky</option>
+                                <option value="LA">Louisiana</option>
+                                <option value="ME">Maine</option>
+                                <option value="MD">Maryland</option>
+                                <option value="MA">Massachusetts</option>
+                                <option value="MI">Michigan</option>
+                                <option value="MN">Minnesota</option>
+                                <option value="MS">Mississippi</option>
+                                <option value="MO">Missouri</option>
+                                <option value="MT">Montana</option>
+                                <option value="NE">Nebraska</option>
+                                <option value="NV">Nevada</option>
+                                <option value="NH">New Hampshire</option>
+                                <option value="NJ">New Jersey</option>
+                                <option value="NM">New Mexico</option>
+                                <option value="NY">New York</option>
+                                <option value="NC">North Carolina</option>
+                                <option value="ND">North Dakota</option>
+                                <option value="OH">Ohio</option>
+                                <option value="OK">Oklahoma</option>
+                                <option value="OR">Oregon</option>
+                                <option value="PA">Pennsylvania</option>
+                                <option value="RI">Rhode Island</option>
+                                <option value="SC">South Carolina</option>
+                                <option value="SD">South Dakota</option>
+                                <option value="TN">Tennessee</option>
+                                <option value="TX">Texas</option>
+                                <option value="UT">Utah</option>
+                                <option value="VT">Vermont</option>
+                                <option value="VA">Virginia</option>
+                                <option value="WA">Washington</option>
+                                <option value="WV">West Virginia</option>
+                                <option value="WI">Wisconsin</option>
+                                <option value="WY">Wyoming</option>
+                            </select>
+                        </div>
+                        <div className="block-container">
+                            <label htmlFor="postalCode">Postal Code
+                            </label>
+                            <input
+                                type="postalCode"
+                                required
+                                id="postalCode"
+                                placeholder="eg. 91790"
+                                value={postalCode}
+                                onChange={(e) => setPostalCode(e.target.value)}
+                                tabIndex={12}
+                                />
+                        </div>
+                        <div className="block-container">
+                            <label htmlFor="placeType">Place Type
+                            </label>
+                            <select name="placeType" id="placeType" onChange={(e) => setPlaceType(e.target.value)}>
+                                <option value="residence">Residence</option>
+                                <option value="place of worship">Place of worship</option>
+                                <option value="bar">Bar</option>
+                                <option value="shopping center">Shopping Center</option>
+                                <option value="highway">Highway</option>
+                                <option value="park">Park</option>
+                                <option value="street">Street</option>
+                                <option value="school">School</option>
+                                <option value="store">Store</option>
+                                <option value="gas station">Gas Station</option>
+                                <option value="office">Office</option>
+                                <option value="restaurant">Restaurant</option>
+                                <option value="nightClub">Nightclub</option>
+                                <option value="concert">Concert</option>
+                                <option value="theater">Theater</option>
+                                <option value="government building">Government Building</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div className="block-container">
+                            <label htmlFor="coordinates">Coordinates
+                            </label>
+                            <input
+                                type="lat"
+                                required
+                                id="lat"
+                                placeholder="latitude"
+                                value={lat}
+                                onChange={(e) => setLat(e.target.value)}
+                                tabIndex={14}
+                                />
+                            <input
+                                type="long"
+                                required
+                                id="long"
+                                placeholder="longitude"
+                                value={long}
+                                onChange={(e) => setLong(e.target.value)}
+                                tabIndex={15}
+                                />
+                        </div>
                     </div>
-                    <div className="block-container">
-                        <label htmlFor="city">City
-                        </label>
-                        <input
-                            type="city"
-                            required
-                            id="city"
-                            placeholder="eg. Los Angeles"
-                            value={city}
-                            onChange={(e) => setCity(e.target.value)}
-                            tabIndex={10}
-                            />
-                    </div>
-                    <div className="block-container">
-                        <label htmlFor="state">State
-                        </label>
-                        <select type="state" required id="state" onChange={(e) => setState(e.target.value)} tabIndex={11}>
-                            <option value="AL">Alabama</option>
-                            <option value="AK">Alaska</option>
-                            <option value="AZ">Arizona</option>
-                            <option value="AR">Arkansas</option>
-                            <option value="CA">California</option>
-                            <option value="CO">Colorado</option>
-                            <option value="CT">Connecticut</option>
-                            <option value="DE">Delaware</option>
-                            <option value="DC">District Of Columbia</option>
-                            <option value="FL">Florida</option>
-                            <option value="GA">Georgia</option>
-                            <option value="HI">Hawaii</option>
-                            <option value="ID">Idaho</option>
-                            <option value="IL">Illinois</option>
-                            <option value="IN">Indiana</option>
-                            <option value="IA">Iowa</option>
-                            <option value="KS">Kansas</option>
-                            <option value="KY">Kentucky</option>
-                            <option value="LA">Louisiana</option>
-                            <option value="ME">Maine</option>
-                            <option value="MD">Maryland</option>
-                            <option value="MA">Massachusetts</option>
-                            <option value="MI">Michigan</option>
-                            <option value="MN">Minnesota</option>
-                            <option value="MS">Mississippi</option>
-                            <option value="MO">Missouri</option>
-                            <option value="MT">Montana</option>
-                            <option value="NE">Nebraska</option>
-                            <option value="NV">Nevada</option>
-                            <option value="NH">New Hampshire</option>
-                            <option value="NJ">New Jersey</option>
-                            <option value="NM">New Mexico</option>
-                            <option value="NY">New York</option>
-                            <option value="NC">North Carolina</option>
-                            <option value="ND">North Dakota</option>
-                            <option value="OH">Ohio</option>
-                            <option value="OK">Oklahoma</option>
-                            <option value="OR">Oregon</option>
-                            <option value="PA">Pennsylvania</option>
-                            <option value="RI">Rhode Island</option>
-                            <option value="SC">South Carolina</option>
-                            <option value="SD">South Dakota</option>
-                            <option value="TN">Tennessee</option>
-                            <option value="TX">Texas</option>
-                            <option value="UT">Utah</option>
-                            <option value="VT">Vermont</option>
-                            <option value="VA">Virginia</option>
-                            <option value="WA">Washington</option>
-                            <option value="WV">West Virginia</option>
-                            <option value="WI">Wisconsin</option>
-                            <option value="WY">Wyoming</option>
-                        </select>
-                    </div>
-                    <div className="block-container">
-                        <label htmlFor="postalCode">Postal Code
-                        </label>
-                        <input
-                            type="postalCode"
-                            required
-                            id="postalCode"
-                            placeholder="eg. 91790"
-                            value={postalCode}
-                            onChange={(e) => setPostalCode(e.target.value)}
-                            tabIndex={12}
-                            />
-                    </div>
-                    <div className="block-container">
-                        <label htmlFor="placeType">Place Type
-                        </label>
-                        <select name="placeType" id="placeType" onChange={(e) => setPlaceType(e.target.value)}>
-                            <option value="residence">Residence</option>
-                            <option value="place of worship">Place of worship</option>
-                            <option value="bar">Bar</option>
-                            <option value="shopping center">Shopping Center</option>
-                            <option value="highway">Highway</option>
-                            <option value="park">Park</option>
-                            <option value="street">Street</option>
-                            <option value="school">School</option>
-                            <option value="store">Store</option>
-                            <option value="gas station">Gas Station</option>
-                            <option value="office">Office</option>
-                            <option value="restaurant">Restaurant</option>
-                            <option value="nightClub">Nightclub</option>
-                            <option value="concert">Concert</option>
-                            <option value="theater">Theater</option>
-                            <option value="government building">Government Building</option>
-                            <option value="other">Other</option>
-                        </select>
-                    </div>
-                    <div className="block-container">
-                        <label htmlFor="coordinates">Coordinates
-                        </label>
-                        <input
-                            type="lat"
-                            required
-                            id="lat"
-                            placeholder="latitude"
-                            value={lat}
-                            onChange={(e) => setLat(e.target.value)}
-                            tabIndex={14}
-                            />
-                        <input
-                            type="long"
-                            required
-                            id="long"
-                            placeholder="longitude"
-                            value={long}
-                            onChange={(e) => setLong(e.target.value)}
-                            tabIndex={15}
-                            />
-                    </div>
+                    
                 
                 </div>
-                <h3 style={{paddingTop : '2ch'}}> Sources </h3>
-                <div className="create-form-group source">
-
-                    <input
-                        type="url"
-                        required
-                        id="url"
-                        placeholder="url"
-                        value={url}
-                        onChange={(e) => setUrl(e.target.value)}
-                        tabIndex={16}
-                        />
-                    <input
-                        type="title"
-                        required
-                        id="title"
-                        placeholder="title"
-                        value={title}
-                        onChange={(e) => setTitle(e.target.value)}
-                        tabIndex={17}
-                        />
-                    <button type="button" onClick={addSrc}>Add Another Source</button>
-                </div>
-                <section className="source-output">
+                <div className="create-form-group">
+                    <h3 style={{paddingTop : '2ch'}}> Sources </h3>
+                    <div className="source">
+                        <input
+                            type="url"
+                            required
+                            id="url"
+                            placeholder="url"
+                            value={url}
+                            onChange={(e) => setUrl(e.target.value)}
+                            tabIndex={16}
+                            />
+                        <input
+                            type="title"
+                            required
+                            id="title"
+                            placeholder="title"
+                            value={title}
+                            onChange={(e) => setTitle(e.target.value)}
+                            tabIndex={17}
+                            />
+                        <button type="button" onClick={addSrc}>Add Another Source</button>
+                    </div>
+                    <section className="source-output">
                         <ul className="source-list"></ul>
-                </section>
-
-
-                <button type="submit" className="btn btn-primary" tabIndex={4}>
-                    Create
-                </button>
-
-
+                    </section>
+                </div>
+                <div className="create-form-group">
+                    <button type="submit" className="btn btn-primary" tabIndex={4}>
+                        Create
+                    </button>
+                </div>
+                
             </form>
         </div>
     )
