@@ -52,45 +52,49 @@ const Signup = ({history}) => {
         }
     };
     return (
-        <>
-            <h2>Join Our Newsletter</h2>
-            <h3>Subscribe to our newsletter to receive the latest news and products.</h3>
-            <form id="contact-form" onSubmit={signupHandler} style={{margin: 10 + '%',marginLeft:5 +'%', width: 350 + 'px'}}>
-                <div className="form-group">
-                    <label htmlFor="firstname">First Name</label>
-                    <input 
-                        type="text" 
-                        className="form-control" 
-                        id="firstname" 
-                        name="firstname" 
-                        placeholder="First Name" 
-                        value={firstname} 
-                        onChange={(e) => setFirstName(e.target.value)} required/>
-                </div>
-                <div className="form-group">
-                    <label htmlFor="lastname">Last Name</label>
-                    <input 
-                        className="form-control" 
-                        id="lastname" 
-                        name="lastname" 
-                        placeholder="Last Name" 
-                        value={lastname} 
-                        onChange={(e) => setLastName(e.target.value)} required/>
-                </div>
-                <div className="form-group">
-                    <label htmlFor="email">Email address</label>
-                    <input 
-                        type="email" 
-                        className="form-control" 
-                        id="email" name="email" 
-                        placeholder="Enter email" 
-                        value={email} 
-                        onChange={(e) => setEmail(e.target.value)} required/>
-                    <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
-                </div>
-                <button type="submit" className="btn btn-primary">Subscribe</button>
-            </form>
-        </>
+        <div className='signup'>
+            <div className="signup-container">
+                <h2>Join Our Newsletter</h2>
+                <h3>Subscribe to our newsletter to receive the latest news and products.</h3>
+                <form id="contact-form" onSubmit={signupHandler} style={{margin: 10 + '%',marginLeft:5 +'%', width: 350 + 'px'}}>
+                    <div className="form-group">
+                        <label htmlFor="firstname">First Name</label>
+                        <input 
+                            type="text" 
+                            className="form-control" 
+                            id="firstname" 
+                            name="firstname" 
+                            placeholder="First Name" 
+                            value={firstname} 
+                            onChange={(e) => setFirstName(e.target.value)} required/>
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="lastname">Last Name</label>
+                        <input 
+                            className="form-control" 
+                            id="lastname" 
+                            name="lastname" 
+                            placeholder="Last Name" 
+                            value={lastname} 
+                            onChange={(e) => setLastName(e.target.value)} required/>
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="email">Email address</label>
+                        <input 
+                            type="email" 
+                            className="form-control" 
+                            id="email" name="email" 
+                            placeholder="Enter email" 
+                            value={email} 
+                            onChange={(e) => setEmail(e.target.value)} required/>
+                            <br/>
+                        <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
+                    </div>
+                    <button type="submit" className="btn btn-primary">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        
     );
 }
 
