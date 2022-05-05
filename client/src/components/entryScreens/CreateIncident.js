@@ -69,18 +69,17 @@ const CreateIncident = ({history}) => {
             state: state,
             postalCode: postalCode
         }
-
-        const config = {
-            header: {
-                "Content-Type": "application/json",
-            },
-        };
-
         const types = getTypes();
-
         const sources = getSourceList();
 
-        console.log(sources);
+        const config = {
+            headers:{
+            "Content-Type": "application/json", 
+            Authorization: `Bearer ${localStorage.getItem("authToken")}`
+            }
+        };
+
+        //console.log(sources);
         
         try {
             const { data } = await axios.post(
@@ -88,8 +87,6 @@ const CreateIncident = ({history}) => {
                 { start_date, end_date, deaths, wounded, types, description, districts, location, sources},
                 config
             );
-            
-            console.log(data);
 
             history.push("/dashboard");
             Store.addNotification({
@@ -104,6 +101,8 @@ const CreateIncident = ({history}) => {
                   duration: 5000
                 }
               });
+              
+            alert(JSON.stringify(data));
 
         } catch (error) {
             setError(error.response.data.error);

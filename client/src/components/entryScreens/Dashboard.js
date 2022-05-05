@@ -32,6 +32,7 @@ const Dashboard = ({history}) => {
                     <button className='btn btn-primary' onClick={incident}>+ Create Incident</button>            
                 </div>
             </div>
+            <button onClick={logoutHandler}>Logout</button>
         </div>
         
     );
