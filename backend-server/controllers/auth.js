@@ -1,6 +1,7 @@
 const Admin = require("../models/Admin");
 const User = require("../models/User");
 const crypto = require("crypto");
+const jwt = require('jsonwebtoken');
 
 const ErrorResponse = require("../utils/errorResponse");
 const sendEmail = require("../utils/sendEmail");
@@ -126,6 +127,38 @@ exports.resetpassword = async (req, res, next) => {
         next(err);
     }
 };
+
+exports.privilege = async (req, res, next) => {
+    let token;
+
+    if(req.headers.authorization && req.headers.authorization.startsWith("Bearer")) {
+            //Bearer token
+        token = req.headers.authorization.split(" ")[1];
+    }
+    
+    if(!token) {
+        return next(new ErrorResponse("Not logged in.", 404));
+    }
+    
+    try {
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    
+            const user = await User.findById(decoded.id);
+            if(!user) {
+                return next(new ErrorResponse("No user found with this id", 404));
+            } 
+    
+            res.status(201).json({
+                success: true,
+                accessLevel: user.accessLevel
+            });
+            
+        next();  
+    } catch(error) {
+        return next(error);
+    }
+
+}
 
 const sendToken = (user, statusCode, res) => {
     const Token = user.getSignedToken();
