@@ -1,17 +1,24 @@
 const Admin = require("../models/Admin");
 const User = require("../models/User");
+const Priv = require("../models/Privileges");
 const crypto = require("crypto");
 const jwt = require('jsonwebtoken');
 
 const ErrorResponse = require("../utils/errorResponse");
 const sendEmail = require("../utils/sendEmail");
+const Privileges = require("../models/Privileges");
 
 exports.register = async (req, res, next) => {
     const {email, password} = req.body;
 
     try {
         let current = true;
+
+        const privilege = await Privileges.findOne({email});
         let accessLevel = 0;
+        if(privilege) {
+            accessLevel = privilege.accessLevel;
+        }
         const admin = await Admin.create({
             email, password, current, accessLevel
         });
@@ -158,6 +165,22 @@ exports.privilege = async (req, res, next) => {
         return next(error);
     }
 
+}
+
+//documents an Admin who will register in the future
+exports.giveprivilege = async (req, res, next) => {
+    const {email, accessLevel } = req.body;
+    try {
+        const admin = await Priv.create({
+            email, accessLevel
+        });
+        res.status(201).json({
+            admin: admin
+        });
+
+    } catch (error) {
+        next(error);
+    }
 }
 
 const sendToken = (user, statusCode, res) => {
