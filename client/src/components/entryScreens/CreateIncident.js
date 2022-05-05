@@ -47,10 +47,10 @@ const CreateIncident = ({history}) => {
     const [error, setError] = useState("");
 
     useEffect(() => {
-        if(localStorage.getItem("authToken")) {
-            history.push("/welcome");
+        if(!localStorage.getItem("authToken")){
+            history.push("/")
         }
-    }, [history]);
+    }, [history])
 
     const incidentHandler = async (e) => {
         e.preventDefault();
@@ -81,7 +81,7 @@ const CreateIncident = ({history}) => {
         const sources = getSourceList();
 
         console.log(sources);
-        /*
+        
         try {
             const { data } = await axios.post(
                 "/api/incidents/create",
@@ -122,7 +122,7 @@ const CreateIncident = ({history}) => {
             setTimeout(() =>{
                 setError("");
             }, 5000);
-        }*/
+        }
 
     };
     

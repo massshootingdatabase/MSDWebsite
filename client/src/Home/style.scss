@@ -24,10 +24,23 @@
   img {
     width: 100%;
     //max-width: 700px;
-    border-radius: 30px;
+    //border-radius: 30px;
     height: auto;
     //padding: 10px;
   }
+}
+
+.who-we {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  align-self: center;
+  height: 175px;
+  max-width: 750px;
+  margin-top: 3ch;
+  border: 3px solid rgb(250, 139, 98);
 }
 
 
@@ -43,6 +56,9 @@
   text-align: center;
   height: 175px;
   margin-top: 5ch;
+  padding: 1.5rem;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+  background: #fff;
   //border: 3px solid cadetblue;
 }
 

@@ -10,7 +10,7 @@ const LoginScreen = ({history}) => {
 
     useEffect(() => {
         if(localStorage.getItem("authToken")) {
-            history.push("/welcome");
+            history.push("/dashboard");
         }
     }, [history]);
 

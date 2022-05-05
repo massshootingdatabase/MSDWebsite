@@ -26,11 +26,10 @@ const NavBar = () =>{
     <img className="logo" src={msdLogo} alt="logo" />
     <ul className="NavBarList">
     <li>
-      <NavLink exact activeClassName="navActive" className="navItem" to="/">Home</NavLink>
+      <NavLink exact activeClassName="navActive" className="navItem" to="/">Mass Shooting Database</NavLink>
     </li>
-   
     <li>
-      <NavLink activeClassName="navActive" className="navItem" to="/login">Login</NavLink>
+      <NavLink activeClassName="navActive" className="navItem" to="/login">Admin</NavLink>
     </li>
     </ul>
     </div>

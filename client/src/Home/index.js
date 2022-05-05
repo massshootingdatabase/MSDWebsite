@@ -16,13 +16,15 @@ function Home({history}) {
   return (
     <div className="Home">
 
-      <h1>Welcome to Mass Shooting Database</h1>
       <img className="banner" src={mspBanner} alt="Banner"/>
 
-      <h3>Who we are.</h3>
-      <p>
-        We are a volunteer organization made up of volunteers all over the United States. Many of our volunteers are students from colleges and universities across the country. No special skills are required to join our volunteer team, just a passion to end mass shootings. 
-      </p>
+      <div className='who-we'>
+        <h3>Who we are.</h3>
+        <p>
+          We are a volunteer organization made up of members all over the United States. Many of our volunteers are students from colleges and universities across the country. No special skills are required to join our volunteer team, just a passion to end mass shootings. 
+        </p>
+      </div>
+      
 
       <div className="subscribe">
         <h4 className='dashboard-title'> Subscribe to our newsletter to stay up to date with the orgnaization's latest! </h4>

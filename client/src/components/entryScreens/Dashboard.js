@@ -5,13 +5,12 @@ import "./Dashboard.css";
 const Dashboard = ({history}) => {
     const[error, setError] = useState("");
     const[privateData, setPrivateData] = useState("");
-/*
+
     useEffect(() => {
         if(!localStorage.getItem("authToken")){
             history.push("/")
         }
-    }, [history] )
-*/
+    }, [history])
     
     const incident = () => {
         history.push("/createincident");
