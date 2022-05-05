@@ -1,16 +1,24 @@
 const Admin = require("../models/Admin");
 const User = require("../models/User");
+const Priv = require("../models/Privileges");
 const crypto = require("crypto");
+const jwt = require('jsonwebtoken');
 
 const ErrorResponse = require("../utils/errorResponse");
 const sendEmail = require("../utils/sendEmail");
+const Privileges = require("../models/Privileges");
 
 exports.register = async (req, res, next) => {
     const {email, password} = req.body;
 
     try {
         let current = true;
+
+        const privilege = await Privileges.findOne({email});
         let accessLevel = 0;
+        if(privilege) {
+            accessLevel = privilege.accessLevel;
+        }
         const admin = await Admin.create({
             email, password, current, accessLevel
         });
@@ -126,6 +134,54 @@ exports.resetpassword = async (req, res, next) => {
         next(err);
     }
 };
+
+exports.privilege = async (req, res, next) => {
+    let token;
+
+    if(req.headers.authorization && req.headers.authorization.startsWith("Bearer")) {
+            //Bearer token
+        token = req.headers.authorization.split(" ")[1];
+    }
+    
+    if(!token) {
+        return next(new ErrorResponse("Not logged in.", 404));
+    }
+    
+    try {
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    
+            const user = await User.findById(decoded.id);
+            if(!user) {
+                return next(new ErrorResponse("No user found with this id", 404));
+            } 
+    
+            res.status(201).json({
+                success: true,
+                accessLevel: user.accessLevel
+            });
+            
+        next();  
+    } catch(error) {
+        return next(error);
+    }
+
+}
+
+//documents an Admin who will register in the future
+exports.giveprivilege = async (req, res, next) => {
+    const {email, accessLevel } = req.body;
+    try {
+        const admin = await Priv.create({
+            email, accessLevel
+        });
+        res.status(201).json({
+            admin: admin
+        });
+
+    } catch (error) {
+        next(error);
+    }
+}
 
 const sendToken = (user, statusCode, res) => {
     const Token = user.getSignedToken();

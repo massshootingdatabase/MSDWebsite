@@ -8,6 +8,18 @@ import venmoIcon from "./Icons/venmo.png"
 import paypalIcon from "./Icons/paypal.png"
 import linkedinIcon from "./Icons/linkedin.png"
 
+/*removing for now
+    <li>
+    <a href="/getInvolved"><img className="icon" src={emailIcon} alt="Email"/></a>
+    </li>
+    <li>
+    <a href="https://venmo.com"><img className="icon" src={venmoIcon} alt="Venmo"/></a>
+    </li>
+    <li>
+    <a href="https://paypal.com"><img className="icon" src={paypalIcon} alt="Paypal"/></a>
+    </li>
+*/
+
 function Footer() {
   return (
     <div className="Footer">
@@ -20,15 +32,6 @@ function Footer() {
     </li>
     <li>
     <a href="https://twitter.com/DatabaseMass"><img className="icon" src={twitterIcon} alt="Twitter"/></a>
-    </li>
-    <li>
-    <a href="/getInvolved"><img className="icon" src={emailIcon} alt="Email"/></a>
-    </li>
-    <li>
-    <a href="https://venmo.com"><img className="icon" src={venmoIcon} alt="Venmo"/></a>
-    </li>
-    <li>
-    <a href="https://paypal.com"><img className="icon" src={paypalIcon} alt="Paypal"/></a>
     </li>
     <li>
     <a href="https://www.linkedin.com/company/mass-shooting-database"><img className="icon" src={linkedinIcon} alt="Linkedin"/></a>

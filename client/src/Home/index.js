@@ -1,25 +1,42 @@
 import React from 'react';
+import { useState } from 'react';
 import "./style.scss";
 import mspBanner from "./Photos/mspBanner.png";
 
-
 // import axios from 'axios';
 
-
-function Home() {
+function Home({history}) {
   // console.log( axios.get('/api') ); // example call to api
+  const[error, setError] = useState("");
+
+  const subscribe = () => {
+    history.push("/signup");
+  }
 
   return (
     <div className="Home">
 
-      <h1>Welcome to Mass Shooting Database</h1>
-      <p>
-      Mass Shooting Database is a nonpartisan, nonprofit organization committed to creating a comprehensive database of mass shootings in the United States. 
-      </p>
+      <img className="banner" src={mspBanner} alt="Banner"/>
 
-      <img src={mspBanner} alt="Banner"/>
+      <div className='who-we'>
+        <h3>Who we are.</h3>
+        <p>
+          We are a volunteer organization made up of members all over the United States. Many of our volunteers are students from colleges and universities across the country. No special skills are required to join our volunteer team, just a passion to end mass shootings. 
+        </p>
+      </div>
       
-      <h2>Methodology</h2>
+
+      <div className="subscribe">
+        <h4 className='dashboard-title'> Subscribe to our newsletter to stay up to date with the orgnaization's latest! </h4>
+        <hr></hr>
+        <button className='subscribe-btn' onClick={subscribe}>Subscribe</button>            
+      </div>
+    </div>
+  );
+}
+/* Omitted Information
+
+        <h2>Methodology</h2>
       <p>
           How the data is collected, then organized.
       </p>
@@ -41,13 +58,8 @@ function Home() {
       There are many definitions of “mass shooting”. Mass Shooting Database defines a mass shooting as any shooting incident in which at least one is killed and at least three are killed or injured, excluding the perpetrator. One characteristic that will make Mass Shooting Database unique is the ability for the user to filter search results by various definition. 
       </p>
 
-      <h3>Who is Mass Shooting Database?</h3>
-      <p>
-      We are a volunteer organization made up of volunteers all over the United States. Many of our volunteers are students from colleges and universities across the country. No special skills are required to join our volunteer team, just a passion to end mass shootings. 
-      </p>
-    </div>
-  );
-}
+
+*/
 
 
 // mapboxgl.accessToken = 'pk.eyJ1IjoiaGlnZ3MzMiIsImEiOiJja3UwZnZtM2gxMDZqMnZvcXU5NHViamloIn0.KlO5rSrT27Ldm_KN6Gvobg';

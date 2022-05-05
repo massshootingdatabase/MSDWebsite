@@ -10,6 +10,8 @@ import LoginScreen from './components/screens/LoginScreen';
 import RegisterScreen from './components/screens/RegisterScreen';
 import ForgotPasswordScreen from './components/screens/ForgotPasswordScreen';
 import ResetPasswordScreen from './components/screens/ResetPasswordScreen';
+import Dashboard from './components/entryScreens/Dashboard'; //data entry dashboard
+import CreateIncident from './components/entryScreens/CreateIncident';
 import Signup from './components/newsletter/Signup';
 import Home from './Home';
 import News from './News';
@@ -28,6 +30,7 @@ function App() {
     <ReactNotifications/>
     <Router>
       <NavBar />
+      <div className="content">
       <Switch>
         <Route path='/' exact component={Home} />
         <Route path='/data' component={Data} />
@@ -39,8 +42,12 @@ function App() {
         <Route exact path="/register" component={RegisterScreen}/>
         <Route exact path="/forgotpassword" component={ForgotPasswordScreen}/>
         <Route exact path="/passwordreset/:resetToken" component={ResetPasswordScreen}/>
+        <Route exact path="/dashboard" component={Dashboard}/>
+        <Route exact path="/createincident" component={CreateIncident}/>
         <Route exact path="/signup" component={Signup}/>
       </Switch>
+      </div> 
+      
     </Router>
     <Footer />
     </div>

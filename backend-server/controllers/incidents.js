@@ -27,7 +27,7 @@ exports.get = async (req, res, next) => {
     const {id} = req.body;
 
     try {
-        const incident = await Incident.findOne({id});
+        const incident = await Incident.findOne({"_id": id});
 
         if(!incident) {
             return next(new ErrorResponse("No incident found", 401));
