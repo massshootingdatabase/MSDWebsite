@@ -23,7 +23,7 @@ exports.protect = (pLevel) => {
                 return next(new ErrorResponse("No user found with this id", 404));
             } 
     
-            if(user.accessLevel !== pLevel) {
+            if(user.accessLevel < pLevel) {
                 return next(new ErrorResponse("Access level " + pLevel + " required. You have level " + user.accessLevel + ".", 401));
             } 
             req.user = user;
