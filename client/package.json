@@ -30,6 +30,9 @@
       "react-app/jest"
     ]
   },
+  "babel": {
+    "plugins": [ "@babel/plugin-syntax-jsx" ]
+  },
   "browserslist": {
     "production": [
       ">0.2%",
