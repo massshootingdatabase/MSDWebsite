@@ -9,7 +9,7 @@
     "install-client": "cd client && npm install",
     "heroku-postbuild": "npm run install-client && npm run build",
     "server": "nodemon index.js",
-    "test": "jest --detectOpenHandles",
+    "test": "jest",
     "test:watch": "jest --watch"
   },
   "dependencies": {

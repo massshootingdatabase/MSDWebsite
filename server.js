@@ -3,6 +3,8 @@ require("dotenv").config();
 
 const PORT = process.env.PORT || 5000;
 const app = require('./index.js');
+const connectDb = require('./config/db');
+connectDb();
 
 const server = app.listen(PORT, () => {
     console.log(`Mass Shooting Database listening at http://localhost:${PORT}`);

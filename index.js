@@ -2,7 +2,6 @@
 require("dotenv").config();
 const express = require('express');
 const expressFileUpload = require('express-fileupload');
-const connectDb = require('./config/db');
 const errorHandler = require('./middleware/error');
 
 // Routers needed for the server...
@@ -13,7 +12,6 @@ let priv = require("./routes/private");
 let person = require("./routes/person");
 let newsletter = require("./routes/newsletter");
 
-connectDb();
 const app = express();
 app.use(express.json());
 app.use(expressFileUpload());

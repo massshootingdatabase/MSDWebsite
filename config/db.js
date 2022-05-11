@@ -5,4 +5,9 @@ const connectDb = async() => {
     //console.log("MongoDB Connected");
 };
 
+const disconnectDb = async() => {
+    await mongoose.connection.close();
+}
+
 module.exports = connectDb;
+module.exports = disconnectDb;

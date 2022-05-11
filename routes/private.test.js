@@ -1,37 +1,24 @@
 const app = require('../index') // Link to your server file
 const supertest = require('supertest')
 const request = supertest(app)
+const mongoose = require('mongoose');
 
-/*
-const { MongoClient } = require("mongodb");
+describe('insert', () => {
 
-// Replace the uri string with your MongoDB connection string.
-const uri ='YOUR-MONGODB-URI'
-const client = new MongoClient(uri)
+  beforeAll(async () => {
+    await mongoose.connect(process.env.DB_SERVER);
+  });
 
-beforeAll(async () => {
-  await client.connect()
-})
+  afterAll(async () => {
+    await mongoose.connection.close();
+  });
 
-afterAll(async () => {
-  await client.close()
-})
-
-test('testing', () => {
-  expect(client).toBeDefined()
-})
-*/
-
-describe('Authorization and Authentication', () => {
-    it('making a bad request to private screen', async() => {
-        const response = await request.get("/api/private");
-        expect(response.statusCode).toBe(401);
-        expect(response.error).toBe("Not authorized to access this route.")
-        // Testing a single element in the array
-
-    });
-
-    // Insert other tests below this line
-
-    // Insert other tests above this line
+  it('making a bad request to private screen', async() => {
+    const response = await request.get("/api/private");
+    expect(response.statusCode).toBe(200);
+    //expect(response.text.message).toBe("You got access to the private data in this route")
+    // Testing a single element in the array
+  });
 });
+
+
