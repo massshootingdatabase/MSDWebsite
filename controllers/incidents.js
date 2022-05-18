@@ -21,7 +21,6 @@ exports.create = async (req, res, next) => {
     }
 };
 
-
 //get the incident with the specified id
 exports.get = async (req, res, next) => {
     const {id} = req.body;
@@ -38,12 +37,14 @@ exports.get = async (req, res, next) => {
             Incident: incident
         });
 
-
     } catch (error) {
         next(error);
     }
 };
 
+/*
+ TODO : These will be useful for updating incidents, not necessary right now for creating an incident.
+ 
 //embed a shooter
 exports.addShooter = async (req, res, next) => {
 
@@ -101,4 +102,4 @@ exports.addVictim = async (req, res, next) => {
     catch (error) {
         next(error);
     }
-}
+}*/

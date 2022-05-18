@@ -1,3 +1,4 @@
+/*
 const Victim = require("../models/Victim");
 const Person = require("../models/Person");
 const ErrorResponse = require("../utils/errorResponse");
@@ -40,3 +41,4 @@ exports.get = async (req, res, next) => {
         next(error);
     }
 };
+*/

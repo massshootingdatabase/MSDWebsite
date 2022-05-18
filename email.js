@@ -1,4 +1,4 @@
-// This defines a router handling all requests to api/email/*
+/* This defines a router handling all requests to api/email/
 // This is done to keep index.js light
 
 // libraries needed in general
@@ -47,3 +47,4 @@ router.post("/", (req, res) => {
 
 
 module.exports = router;
+*/
