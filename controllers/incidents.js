@@ -24,6 +24,10 @@ exports.create = async (req, res, next) => {
         const newIncident = await Incident.findOne({"_id": id});
         console.log("NEW INCIDENT");
         console.log(newIncident);
+        
+        //for some reason the incident isn't showing up as populate with victims, but making a separate api call to 
+        // incident GET reveals that it was indeed updated. Basically it works, but is going to be harder to test to 
+        // catch the case where it doesn't work
 */
         res.status(200).json({
             success:true,
