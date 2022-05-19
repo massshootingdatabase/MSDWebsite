@@ -5,21 +5,55 @@ const Victim = require("../models/Victim");
 
 //create an incident 
 exports.create = async (req, res, next) => {
-    const {start_date, end_date, deaths, wounded, types, description, districts, location, sources} = req.body;
+    const {start_date, end_date, deaths, wounded, types, description, districts, location, sources, victims, shooters} = req.body;
 
     try {
         const incident = await Incident.create({
-            start_date, end_date, deaths, wounded, types, description, districts, location, sources
+            start_date, end_date, deaths, wounded, types, description, districts, location, sources, shooters
         });
+
+        const id = incident._id;
+        victims.forEach(v => {
+            console.log(v.name);
+            addVictim(v, id, next);
+        });
+
+        const updated = await Incident.findOne({id});
         
         res.status(200).json({
             success:true,
-            incident: incident
+            incident: updated
         });
     } catch (error) {
         next(error);
     }
 };
+
+const addVictim = async (v, incId, next) => {
+    const {id, name, age, gender, race, sexuality, died, knewPerp} = v;
+
+    //create a victim 
+    try {
+        const victim = await Victim.create({
+            name, age, gender, race, sexuality, died, knewPerp
+        });
+        
+        //get the incident we are going to save a victim to       
+        const incident = await Incident.findOne({incId});
+        incident.victims.push(victim._id);
+        incident.save(function (err) {
+            if (!err) console.log('Success!');
+        });
+
+        res.status(200).json({
+            success:true,
+            Incident: incident
+        });
+    }
+    catch (error) {
+        next(error);
+    }
+}
 
 //get the incident with the specified id
 exports.get = async (req, res, next) => {
@@ -41,6 +75,9 @@ exports.get = async (req, res, next) => {
         next(error);
     }
 };
+
+
+
 
 /*
  TODO : These will be useful for updating incidents, not necessary right now for creating an incident.
