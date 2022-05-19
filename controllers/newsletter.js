@@ -129,6 +129,7 @@ exports.confirm = async (req, res, next) => {
         return sgClient.request(request);
    }
    
+/*   
 exports.upload = async (req, res) => {
     const listID = await getListID('Newsletter Subscribers');
     const htmlNewsletter = req.files.newsletter.data.toString();
@@ -188,4 +189,4 @@ async function deleteContactFromList(listID, contact) {
     }
     await sgClient.request(request);
 }
-   
+   */
