@@ -12,47 +12,45 @@ exports.create = async (req, res, next) => {
             start_date, end_date, deaths, wounded, types, description, districts, location, sources, shooters
         });
 
-        const id = incident._id;
-        victims.forEach(v => {
-            console.log(v.name);
-            addVictim(v, id, next);
-        });
-
-        const updated = await Incident.findOne({id});
-        
+        if(victims!==undefined && victims.length>0) {
+            victims.forEach(v => {
+                console.log(v.name);
+                addVictim(v, incident, next);
+            });
+        }
+/*
+        let id = JSON.stringify(incident._id);
+        id = id.substring(1, id.length-1);
+        const newIncident = await Incident.findOne({"_id": id});
+        console.log("NEW INCIDENT");
+        console.log(newIncident);
+*/
         res.status(200).json({
             success:true,
-            incident: updated
+            incident: incident
         });
+
     } catch (error) {
         next(error);
     }
 };
 
-const addVictim = async (v, incId, next) => {
-    const {id, name, age, gender, race, sexuality, died, knewPerp} = v;
+const addVictim = async (v, incident, next) => {
+    const {name, age, gender, race, sexuality, died, knewPerp} = v;
 
     //create a victim 
-    try {
-        const victim = await Victim.create({
-            name, age, gender, race, sexuality, died, knewPerp
-        });
+    const victim = await Victim.create({
+        name, age, gender, race, sexuality, died, knewPerp
+    });
         
-        //get the incident we are going to save a victim to       
-        const incident = await Incident.findOne({incId});
-        incident.victims.push(victim._id);
-        incident.save(function (err) {
-            if (!err) console.log('Success!');
-        });
+    //console.log(victim);
 
-        res.status(200).json({
-            success:true,
-            Incident: incident
-        });
-    }
-    catch (error) {
-        next(error);
-    }
+    incident.victims.push(victim._id);
+    incident.save(function (err) {
+        if (!err) console.log('Success!');
+    });
+    //console.log("INCIDENT:");
+    //console.log(incident);
 }
 
 //get the incident with the specified id
