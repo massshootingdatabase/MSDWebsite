@@ -153,22 +153,35 @@ function createRange(min, max) {
   return options;
 }
 
-
-function setupQuery(queryStrings) {
   /**
    * Parses the query strings object and returns findOptions object
    * containing the appropriate arugments for find
    */
+  
+function setupQuery(queryStrings) {
   let findOptions = {};
   
   // checking if the type of a query string is a string
   // is a quick way to check if the query string param has a usable value
-  let params = ["state", "city", "postal_code", "congressional", "stateSenate", "stateHouse", "place_type"]
-  params.forEach(element => {
+  let locationParams = ["state", "city", "address", "postal_code", "place_type"];
+  locationParams.forEach(element => {
     if (typeof queryStrings[element] === "string") {
-      findOptions[element] = queryStrings[element];
+      findOptions["location." + element] = queryStrings[element];
     }
   });
+
+  let districtParams = ["congressional", "state_senate", "state_house"];
+  districtParams.forEach(element => {
+    if (typeof queryStrings[element] === "string") {
+      findOptions["districts." + element] = queryStrings[element];
+    }
+  });
+
+  //checks for a key word or phrase in the description
+  if(isNaN(queryStrings["keyWord"])) {
+    findOptions["description"] = {'$regex' : '.*' + queryStrings["keyWord"] + '.*'}
+  }
+  console.log(findOptions);
 
   // process deaths
   let deathRange = createRange(queryStrings.minKilled, queryStrings.maxKilled);
