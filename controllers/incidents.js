@@ -3,7 +3,11 @@ const Incident = require("../models/Incidents");
 const Shooter = require("../models/Shooter");
 const Victim = require("../models/Victim");
 
-//create an incident 
+
+/*-----------------------------------------------------*/
+/*------------------- INCIDENT CREATE -----------------*/
+/*-----------------------------------------------------*/
+
 exports.create = async (req, res, next) => {
     const {start_date, end_date, deaths, wounded, types, description, districts, location, sources, victims, shooters} = req.body;
 
@@ -84,12 +88,12 @@ exports.get = async (req, res, next) => {
     }
 };
 
-/* Might replace the above function with this one
+/* 
 router.get("/:gva_id(\\d+)", async (req, res) => {
   // /api/incidents/19878
   let query = await incidentModel
     .findOne(
-      { gva_id:  }, 
+      { gva_id: req.params.id }, 
       setupProject(req.query))
     .exec();
   res.json(query);
@@ -115,16 +119,20 @@ exports.getAdvanced = async (req, res, next) => {
 
   //setting project because search results are not going to show everything right away
   //adding offset for pagination purposes
-  let query = incidentModel
+  let incident = await Incident
     .find(setupQuery(req.query), setupProject(req.query))
     .sort(setupOrderBy(req.query))
     .skip(offset)
     .limit(limit);
   
-  console.log(query.getFilter(), query.getOptions(), query.projection());
+  //console.log(query.getFilter(), query.getOptions(), query.projection());
 
-  let results = await query.exec();
-  res.json(results);
+  //let results = await query.exec();
+  //res.json(results);
+  res.status(200).json({
+    success:true,
+    Incident: incident
+});
 };
 
 
@@ -242,6 +250,10 @@ function setupOrderBy(queryStrings) {
   return orderBy;
 }
 
+
+/*-----------------------------------------------------*/
+/*------------------- INCIDENT UPDATES ----------------*/
+/*-----------------------------------------------------*/
 
 /*
  TODO : These will be useful for updating incidents, not necessary right now for creating an incident.
