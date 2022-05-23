@@ -66,10 +66,9 @@ const addVictim = async (v, incident, next) => {
 
 //get the incident with the specified id
 exports.get = async (req, res, next) => {
-    const {id} = req.body;
 
     try {
-        const incident = await Incident.findOne({"_id": id});
+        const incident = await Incident.findOne({"_id": req.params.id});
 
         if(!incident) {
             return next(new ErrorResponse("No incident found", 401));
@@ -90,7 +89,7 @@ router.get("/:gva_id(\\d+)", async (req, res) => {
   // /api/incidents/19878
   let query = await incidentModel
     .findOne(
-      { gva_id: req.params.gva_id }, 
+      { gva_id:  }, 
       setupProject(req.query))
     .exec();
   res.json(query);
@@ -98,7 +97,7 @@ router.get("/:gva_id(\\d+)", async (req, res) => {
 */
 
 //constructs a query from an advanced search form
-router.get("/", async (req, res) => {
+exports.getAdvanced = async (req, res, next) => {
   /* default search parameters are:
     {
       limit: 10
@@ -126,7 +125,7 @@ router.get("/", async (req, res) => {
 
   let results = await query.exec();
   res.json(results);
-});
+};
 
 
 
