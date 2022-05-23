@@ -157,7 +157,6 @@ function createRange(min, max) {
    * Parses the query strings object and returns findOptions object
    * containing the appropriate arugments for find
    */
-  
 function setupQuery(queryStrings) {
   let findOptions = {};
   
@@ -178,7 +177,7 @@ function setupQuery(queryStrings) {
   });
 
   //checks for a key word or phrase in the description
-  if(isNaN(queryStrings["keyWord"])) {
+  if(typeof queryStrings["keyWord"] === "string") {
     findOptions["description"] = {'$regex' : '.*' + queryStrings["keyWord"] + '.*'}
   }
   console.log(findOptions);
