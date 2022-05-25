@@ -201,14 +201,16 @@ function setupQuery(queryStrings) {
   let dateRange = {};
   // the createRange function doesn't work with dates...
   if (typeof queryStrings.before === "string") {
-    dateRange.$lte = queryStrings.before;
+    dateRange.$lte = new Date(queryStrings.before).toISOString();
   }
   if (typeof queryStrings.after === "string") {
-    dateRange.$gte = queryStrings.after;
+    dateRange.$gte = new Date(queryStrings.after).toISOString();
   }
   if (Object.keys(dateRange).length > 0) {
-    findOptions.date = dateRange;
+    findOptions.start_date = dateRange;
   }
+
+  console.log(findOptions);
 
   return findOptions;
 }
