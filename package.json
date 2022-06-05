@@ -15,7 +15,6 @@
   "dependencies": {
     "@sendgrid/client": "^7.6.2",
     "@sendgrid/mail": "^7.6.2",
-    "animate.css": "^4.1.1",
     "bcryptjs": "^2.4.3",
     "dotenv": "^16.0.0",
     "ejs": "^3.1.7",
@@ -24,8 +23,7 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.3.2",
     "nodemailer": "^6.7.3",
-    "nodemon": "^2.0.15",
-    "react-notifications-component": "^3.4.1"
+    "nodemon": "^2.0.15"
   },
   "devDependencies": {
     "@babel/plugin-syntax-jsx": "^7.16.7",
