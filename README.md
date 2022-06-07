@@ -1,17 +1,57 @@
 # Stack
 Download Node Package Manager (npm)
 
+## Back-end
+* Express
+* Mongoose - will help backend communicate with MongoDB 
+* Mongo Express - GUI for doing stuff with MongoDB
+* Jest - will be used for unit testing
+* Postman - recommended for testing APIs manually
+
+# Getting Started on the backend
+
+## Instructions
+Make sure you have an [.env file.](https://nodejs.dev/learn/how-to-read-environment-variables-from-nodejs)
+
+### Type `npm install` to install the dependencies needed to run the project.
+
+## .env and installations requirements
+Add a .env file into your project.
+
+### Local MongoDB 
+* [Installation instructions](https://www.mongodb.com/docs/manual/administration/install-community/).
+* Paste: DB_SERVER=<[YOUR_CONNECTION_STRING](https://www.mongodb.com/docs/manual/reference/connection-string/)> into .env file.
+
+### Json Web Token for User Auth
+* run `node` into your command line in the root directory
+* Generate a web token by running `require('crypto').randomBytes(35).toString("hex")`
+* Paste: `JWT_SECRET=<THE_OUTPUT_STRING>` into .env file.
+* Paste: `JWT_EXPIRE=10mins` into .env file. Can be changed to however long authentication should last. 
+
+### Sendgrid configs necessary for the newsletter functions.
+
+Paste all the following into .env
+* `EMAIL_SERVICE=SendGrid`
+* `EMAIL_USERNAME=apikey`
+* `EMAIL_PASSWORD=SG.placeholder-to-run-will-not-work`
+* `EMAIL_FROM=dummyEmail@gmail.com`
+
+## Other scripts
+
+### `npm start`
+
+Runs the app in the development mode on a specified .env port or port 5000.
+
+### `npm test`
+
+Launches the JEST test runner.
+
+
 ## Front-end
 * React 
 * Sass
 * GraphQL - We'll keep this as this will allow the frontend to more efficiently make requests
 * Tailwind CSS - seems interesting, may not be necessary
-
-
-## Back-end
-* Express
-* Mongoose - will help backend communicate with MongoDB 
-* Mongo Express - GUI for doing stuff with MongoDB
 
 
 # Getting Started with Create React App
