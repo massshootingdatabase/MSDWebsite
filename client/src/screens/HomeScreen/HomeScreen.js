@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import "./style.scss";
+import "./HomeScreen.scss";
 import mspBanner from "./Photos/mspBanner.png";
 
 // import axios from 'axios';
