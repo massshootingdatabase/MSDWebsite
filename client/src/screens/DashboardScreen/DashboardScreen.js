@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react';
 import axios from 'axios';
-import "./Dashboard.css";
+import "./DashboardScreen.css";
 
 const Dashboard = ({history}) => {
     const[error, setError] = useState("");
