@@ -1,5 +1,5 @@
 import React from 'react';
-import "./style.scss";
+import "./Footer.scss";
 import facebookIcon from "./Icons/facebook.png";
 import emailIcon from "./Icons/gmail.png";
 import twitterIcon from "./Icons/twitter.png";
