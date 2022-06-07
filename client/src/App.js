@@ -11,7 +11,7 @@ import RegisterScreen from './screens/RegisterScreen/RegisterScreen';
 import ForgotPasswordScreen from './screens/ForgotPasswordScreen/ForgotPasswordScreen';
 import ResetPasswordScreen from './screens/ResetPasswordScreen/ResetPasswordScreen';
 import DashboardScreen from './screens/DashboardScreen/DashboardScreen'; //data entry dashboard
-import CreateIncidentScreen from './screens/DashboardScreen/DashboardScreen';
+import CreateIncidentScreen from './screens/CreateIncidentScreen/CreateIncidentScreen';
 import SignupScreen from './screens/SignupScreen/SignupScreen';
 import HomeScreen from './screens/HomeScreen/HomeScreen';
 import NewsScreen from './screens/NewsScreen/NewsScreen';
