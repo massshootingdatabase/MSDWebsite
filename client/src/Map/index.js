@@ -20,4 +20,4 @@ function viewMap() {
   )
 }
 
-export default viewMap;
+export default viewMap

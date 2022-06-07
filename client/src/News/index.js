@@ -1,5 +1,5 @@
 import React from 'react';
-import "./NewsScreen.scss";
+import "./style.scss";
 
 function News() {
   return (

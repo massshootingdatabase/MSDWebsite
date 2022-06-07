@@ -1,5 +1,5 @@
 import React from 'react';
-import "./ContactForm.scss";
+import "./style.scss";
 
 function ContactForm() {
     // we'll have to change the url in action in production

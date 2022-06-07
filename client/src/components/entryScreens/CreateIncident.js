@@ -1,8 +1,8 @@
 import {useState, useEffect} from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
-import "./CreateIncidentScreen.css";
-import { generateText, validateInput, createElement } from '../../helper_functions/utils';
+import "./CreateIncident.css";
+import { generateText, validateInput, createElement } from './utils';
 import { Store } from 'react-notifications-component';
 import 'react-notifications-component/dist/theme.css';
 import 'animate.css';

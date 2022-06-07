@@ -1,5 +1,5 @@
 import React from 'react';
-import "./DataScreen.scss";
+import "./style.scss";
 import DataTable from 'react-data-table-component';
 
 const columns = [

@@ -1,25 +1,25 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 //Routing
-import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import PrivateRoute from './components/routing/PrivateRoute';
 
 
 //Screen
-import PrivateScreen from './screens/PrivateScreen/PrivateScreen';
-import LoginScreen from './screens/LoginScreen/LoginScreen';
-import RegisterScreen from './screens/RegisterScreen/RegisterScreen';
-import ForgotPasswordScreen from './screens/ForgotPasswordScreen/ForgotPasswordScreen';
-import ResetPasswordScreen from './screens/ResetPasswordScreen/ResetPasswordScreen';
-import DashboardScreen from './screens/DashboardScreen/DashboardScreen'; //data entry dashboard
-import CreateIncidentScreen from './screens/CreateIncidentScreen/CreateIncidentScreen';
-import SignupScreen from './screens/SignupScreen/SignupScreen';
-import HomeScreen from './screens/HomeScreen/HomeScreen';
-import NewsScreen from './screens/NewsScreen/NewsScreen';
-import DataScreen from './screens/DataScreen/DataScreen';
-import GetInvolvedScreen from './screens/GetInvolvedScreen/GetInvolvedScreen';
-import viewMapScreen from "./screens/MapScreen/MapScreen";
-import NavBar from './components/NavBar/NavBar';
-import Footer from './components/Footer/Footer';
+import PrivateScreen from './components/screens/PrivateScreen';
+import LoginScreen from './components/screens/LoginScreen';
+import RegisterScreen from './components/screens/RegisterScreen';
+import ForgotPasswordScreen from './components/screens/ForgotPasswordScreen';
+import ResetPasswordScreen from './components/screens/ResetPasswordScreen';
+import Dashboard from './components/entryScreens/Dashboard'; //data entry dashboard
+import CreateIncident from './components/entryScreens/CreateIncident';
+import Signup from './components/newsletter/Signup';
+import Home from './Home';
+import News from './News';
+import Data from './Data';
+import GetInvolved from './GetInvolved';
+import NavBar from './NavBar';
+import Footer from './Footer';
+import viewMap from "./Map";
 import { ReactNotifications } from 'react-notifications-component'
 import 'react-notifications-component/dist/theme.css'
 
@@ -32,19 +32,19 @@ function App() {
       <NavBar />
       <div className="content">
       <Switch>
-        <Route path='/' exact component={HomeScreen} />
-        <Route path='/data' component={DataScreen} />
-        <Route path='/news' component={NewsScreen} />
-        <Route path='/getInvolved' component={GetInvolvedScreen} />
-        <Route path='/Map' component={viewMapScreen} />
+        <Route path='/' exact component={Home} />
+        <Route path='/data' component={Data} />
+        <Route path='/news' component={News} />
+        <Route path='/getInvolved' component={GetInvolved} />
+        <Route path='/Map' component={viewMap} />
         <Route exact path="/login" component={LoginScreen}/>
         <Route exact path="/welcome" component={PrivateScreen}/>
         <Route exact path="/register" component={RegisterScreen}/>
         <Route exact path="/forgotpassword" component={ForgotPasswordScreen}/>
         <Route exact path="/passwordreset/:resetToken" component={ResetPasswordScreen}/>
-        <Route exact path="/dashboard" component={DashboardScreen}/>
-        <Route exact path="/createincident" component={CreateIncidentScreen}/>
-        <Route exact path="/signup" component={SignupScreen}/>
+        <Route exact path="/dashboard" component={Dashboard}/>
+        <Route exact path="/createincident" component={CreateIncident}/>
+        <Route exact path="/signup" component={Signup}/>
       </Switch>
       </div> 
       

@@ -1,6 +1,6 @@
 import React from 'react';
-import "./GetInvolvedScreen.scss";
-import ContactForm from './ContactForm/ContactForm';
+import "./style.scss";
+import ContactForm from './ContactForm';
 
 function GetInvolved() {
   return (

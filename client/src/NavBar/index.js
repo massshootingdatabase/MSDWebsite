@@ -1,5 +1,5 @@
 import React from 'react';
-import "./NavBar.scss";
+import "./style.scss";
 import { NavLink } from 'react-router-dom';
 import msdLogo from "./msdLogo.png";
 
