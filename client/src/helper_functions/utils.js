@@ -1,4 +1,4 @@
-//utility functions
+// utility functions
 
 exports.generateText = (url, title) => {
   // Returns output text
@@ -21,7 +21,7 @@ exports.validateInput = (text, notEmpty, isNumber) => {
   if (notEmpty && text.trim().length === 0) {
     return false;
   }
-  if (isNumber && +text === NaN) {
+  if (isNumber && isNaN(+text)) {
     return false;
   }
   return true;

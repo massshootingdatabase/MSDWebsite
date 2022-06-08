@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import axios from "axios";
 import "./SignupScreen.css";
 import { Store } from "react-notifications-component";
@@ -10,7 +10,7 @@ const Signup = ({ history }) => {
   const [firstname, setFirstName] = useState("");
   const [lastname, setLastName] = useState("");
 
-  const [error, setError] = useState("");
+  // const [error, setError] = useState("");
 
   const signupHandler = async (e) => {
     e.preventDefault();
@@ -22,7 +22,7 @@ const Signup = ({ history }) => {
     };
 
     try {
-      const { data } = await axios.post(
+      await axios.post(
         "/api/newsletter/signup",
         { email, firstname, lastname },
         config
@@ -43,9 +43,9 @@ const Signup = ({ history }) => {
         },
       });
     } catch (error) {
-      setError(error.response.data.error);
+      // setError(error.response.data.error);
       setTimeout(() => {
-        setError("");
+        // setError("");
       }, 5000);
     }
   };
@@ -100,7 +100,7 @@ const Signup = ({ history }) => {
             />
             <br />
             <small id="emailHelp" className="form-text text-muted">
-              We'll never share your email with anyone else.
+              We&apos;ll never share your email with anyone else.
             </small>
           </div>
           <button type="submit" className="btn btn-primary">

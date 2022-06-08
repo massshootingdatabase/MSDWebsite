@@ -1,5 +1,3 @@
-import React from "react";
-import { useState } from "react";
 import "./HomeScreen.scss";
 import mspBanner from "./Photos/mspBanner.png";
 
@@ -7,7 +5,6 @@ import mspBanner from "./Photos/mspBanner.png";
 
 function Home({ history }) {
   // console.log( axios.get('/api') ); // example call to api
-  const [error, setError] = useState("");
 
   const subscribe = () => {
     history.push("/signup");
@@ -30,8 +27,8 @@ function Home({ history }) {
       <div className="subscribe">
         <h4 className="dashboard-title">
           {" "}
-          Subscribe to our newsletter to stay up to date with the orgnaization's
-          latest!{" "}
+          Subscribe to our newsletter to stay up to date with the
+          organization&apos;s latest!{" "}
         </h4>
         <hr></hr>
         <button className="subscribe-btn" onClick={subscribe}>

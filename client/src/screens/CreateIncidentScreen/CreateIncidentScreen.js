@@ -1,25 +1,26 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import "./CreateIncidentScreen.css";
 import {
   generateText,
-  validateInput,
+  // validateInput,
   createElement,
 } from "../../helper_functions/utils";
 import { Store } from "react-notifications-component";
 import "react-notifications-component/dist/theme.css";
 import "animate.css";
+/* eslint-disable camelcase */
 
 const CreateIncident = ({ history }) => {
-  const [incidentId, setIncidentId] = useState(""); //gva id optional
+  const [incidentId, setIncidentId] = useState(""); // gva id optional
   const [start_date, setStartDate] = useState("");
   const [end_date, setEndDate] = useState("");
   const [deaths, setDeaths] = useState("");
   const [wounded, setWounded] = useState("");
   const [description, setDescription] = useState("");
 
-  //types
+  // types
   const [incidentType, setIncidentType] = useState({
     homicide: false,
     murderSuicide: false,
@@ -30,17 +31,17 @@ const CreateIncident = ({ history }) => {
     schoolShooting: false,
   });
 
-  //sources
+  // sources
   const [url, setUrl] = useState("");
   const [title, setTitle] = useState("");
 
-  //districts
+  // districts
   const [congressional, setCongressional] = useState("");
   const [senate, setSenate] = useState("");
   const [house, setHouse] = useState("");
 
-  //location
-  const [placeType, setPlaceType] = useState("residence"); //initialized to residential
+  // location
+  const [placeType, setPlaceType] = useState("residence"); // initialized to residential
   const [lat, setLat] = useState("");
   const [long, setLong] = useState("");
   const [address, setAddress] = useState("");
@@ -60,7 +61,7 @@ const CreateIncident = ({ history }) => {
     e.preventDefault();
 
     const districts = {
-      congressional: congressional,
+      congressional,
       state_senate: senate,
       state_house: house,
     };
@@ -68,10 +69,10 @@ const CreateIncident = ({ history }) => {
     const location = {
       place_type: placeType,
       coordinates: [lat, long],
-      address: address,
-      city: city,
-      state: state,
-      postalCode: postalCode,
+      address,
+      city,
+      state,
+      postalCode,
     };
     const types = getTypes();
     const sources = getSourceList();
@@ -83,7 +84,7 @@ const CreateIncident = ({ history }) => {
       },
     };
 
-    //console.log(sources);
+    // console.log(sources);
 
     try {
       const { data } = await axios.post(
@@ -105,7 +106,7 @@ const CreateIncident = ({ history }) => {
       history.push("/dashboard");
       Store.addNotification({
         title: "Incident Created!",
-        //message: "Insertion success. Add another .",
+        // message: "Insertion success. Add another .",
         type: "success",
         insert: "top",
         container: "top-right",
@@ -139,7 +140,7 @@ const CreateIncident = ({ history }) => {
   };
 
   const addSrc = (e) => {
-    //e.preventDefault();
+    // e.preventDefault();
     const sourceList = document.querySelector(".source-list");
     const outputText = generateText(url, title);
     const element = createElement("li", outputText, "source-item");
@@ -151,22 +152,22 @@ const CreateIncident = ({ history }) => {
   const getSourceList = () => {
     let list = [];
     const sourceList = document.querySelector(".source-list");
-    var items = sourceList.getElementsByTagName("li");
-    for (var i = 0; i < items.length; ++i) {
+    const items = sourceList.getElementsByTagName("li");
+    for (let i = 0; i < items.length; ++i) {
       const myArray = items[i].textContent.split(", ");
-      let u = myArray[1];
-      let t = myArray[0];
+      const u = myArray[1];
+      const t = myArray[0];
       list = list.concat({ url: u, title: t });
     }
     if (url !== "") {
-      list = list.concat({ url: url, title: title });
+      list = list.concat({ url, title });
     }
     return list;
   };
 
   const getTypes = () => {
-    let checkArray = [];
-    for (var key in incidentType) {
+    const checkArray = [];
+    for (const key in incidentType) {
       if (incidentType[key] === true) {
         checkArray.push(key.toString());
       }
@@ -200,7 +201,7 @@ const CreateIncident = ({ history }) => {
               <label htmlFor="start_date">Start Date: </label>
               <input
                 type="start_date"
-                //required
+                // required
                 id="start_date"
                 placeholder="eg. 2019-12-28T09:53Z"
                 value={start_date}
@@ -212,7 +213,7 @@ const CreateIncident = ({ history }) => {
               <label htmlFor="end_date">End Date: </label>
               <input
                 type="end_date"
-                //required
+                // required
                 id="end_date"
                 placeholder="eg. 2019-12-28T09:53Z"
                 value={end_date}
@@ -229,7 +230,7 @@ const CreateIncident = ({ history }) => {
             <label htmlFor="deaths">Deaths:</label>
             <input
               type="deaths"
-              //required
+              // required
               id="deaths"
               placeholder="eg. 5"
               value={deaths}
@@ -239,7 +240,7 @@ const CreateIncident = ({ history }) => {
             <label htmlFor="wounded">Wounded:</label>
             <input
               type="wounded"
-              //required
+              // required
               id="wounded"
               placeholder="eg. 2"
               value={wounded}
@@ -338,7 +339,7 @@ const CreateIncident = ({ history }) => {
             <input
               className="description-input"
               type="description"
-              //required
+              // required
               id="description"
               placeholder="incident name, 'shooter walked up and ..' "
               value={description}
@@ -385,7 +386,7 @@ const CreateIncident = ({ history }) => {
               <label htmlFor="address">Address</label>
               <input
                 type="address"
-                //required
+                // required
                 id="address"
                 placeholder="street address"
                 value={address}
@@ -397,7 +398,7 @@ const CreateIncident = ({ history }) => {
               <label htmlFor="city">City</label>
               <input
                 type="city"
-                //required
+                // required
                 id="city"
                 placeholder="eg. Los Angeles"
                 value={city}
@@ -471,7 +472,7 @@ const CreateIncident = ({ history }) => {
               <label htmlFor="postalCode">Postal Code</label>
               <input
                 type="postalCode"
-                //required
+                // required
                 id="postalCode"
                 placeholder="eg. 91790"
                 value={postalCode}
@@ -509,7 +510,7 @@ const CreateIncident = ({ history }) => {
               <label htmlFor="coordinates">Coordinates</label>
               <input
                 type="lat"
-                //required
+                // required
                 id="lat"
                 placeholder="latitude"
                 value={lat}
@@ -518,7 +519,7 @@ const CreateIncident = ({ history }) => {
               />
               <input
                 type="long"
-                //required
+                // required
                 id="long"
                 placeholder="longitude"
                 value={long}
@@ -533,7 +534,7 @@ const CreateIncident = ({ history }) => {
           <div className="source">
             <input
               type="url"
-              //required
+              // required
               id="url"
               placeholder="url"
               value={url}
@@ -542,7 +543,7 @@ const CreateIncident = ({ history }) => {
             />
             <input
               type="title"
-              //required
+              // required
               id="title"
               placeholder="title"
               value={title}

@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
 import "./DashboardScreen.css";
-
+/* eslint no-unused-vars: "off" */
 const Dashboard = ({ history }) => {
   const [error, setError] = useState("");
-  const [privateData, setPrivateData] = useState("");
+  // const [privateData, setPrivateData] = useState("");
 
   useEffect(() => {
     if (!localStorage.getItem("authToken")) {

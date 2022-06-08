@@ -1,14 +1,14 @@
 import React from "react";
 import "./Footer.scss";
 import facebookIcon from "./Icons/facebook.png";
-import emailIcon from "./Icons/gmail.png";
+// import emailIcon from "./Icons/gmail.png";
 import twitterIcon from "./Icons/twitter.png";
 import instagramIcon from "./Icons/instagram.png";
-import venmoIcon from "./Icons/venmo.png";
-import paypalIcon from "./Icons/paypal.png";
+// import venmoIcon from "./Icons/venmo.png";
+// import paypalIcon from "./Icons/paypal.png";
 import linkedinIcon from "./Icons/linkedin.png";
 
-/*removing for now
+/* removing for now
     <li>
     <a href="/getInvolved"><img className="icon" src={emailIcon} alt="Email"/></a>
     </li>
