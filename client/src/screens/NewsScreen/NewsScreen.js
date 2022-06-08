@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import "./NewsScreen.scss";
 
 function News() {
@@ -6,7 +6,7 @@ function News() {
     <div className="News">
       <h2>News Page</h2>
     </div>
-  )
+  );
 }
 
-export default News
+export default News;

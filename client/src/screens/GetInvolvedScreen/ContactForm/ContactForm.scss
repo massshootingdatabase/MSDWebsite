@@ -1,10 +1,10 @@
-.contactForm{
-    .contact_form_element {
-        margin-bottom: 10px;
-    }
-    
-    /* Necessary to align email message box with its label */
-    .contact_form_element #contact_message * {
-        vertical-align: text-top;
-    }
+.contactForm {
+  .contact_form_element {
+    margin-bottom: 10px;
+  }
+
+  /* Necessary to align email message box with its label */
+  .contact_form_element #contact_message * {
+    vertical-align: text-top;
+  }
 }

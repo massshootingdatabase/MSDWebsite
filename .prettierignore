@@ -3,6 +3,7 @@
 .gitignore
 .nvmrc
 etl_pipeline
+coverage/*
 node_modules/*
 .idea/*
 *.md

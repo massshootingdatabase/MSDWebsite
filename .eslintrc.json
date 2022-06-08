@@ -1,7 +1,8 @@
 {
     "env": {
         "browser": true,
-        "es2021": true
+        "es2021": true,
+        "jest": true
     },
     "settings": {
         "react": {
@@ -10,7 +11,8 @@
     },
     "plugins": [
       "@babel",
-      "react"  
+      "react",
+      "prettier" 
     ],
     "extends": [
         "standard",
@@ -23,5 +25,13 @@
         "sourceType": "module"
     },
     "rules": {
+        "prettier/prettier": [
+            "warn",
+            {
+              "endOfLine": "auto"
+            }
+          ],
+        "react/react-in-jsx-scope": "off",
+        "react/prop-types": "off"
     }
 }

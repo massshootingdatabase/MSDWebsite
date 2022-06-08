@@ -1,10 +1,10 @@
-import React from 'react';
+import React from "react";
 import "./src/index.css";
 
 function viewMap() {
   return (
     <html lang="en">
-      <head>  
+      <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta
@@ -16,8 +16,8 @@ function viewMap() {
       <body>
         <div id="root"></div>
       </body>
-    </html> 
-  )
+    </html>
+  );
 }
 
 export default viewMap;

@@ -1,35 +1,39 @@
-import React from 'react';
-import { useState } from 'react';
 import "./HomeScreen.scss";
 import mspBanner from "./Photos/mspBanner.png";
 
 // import axios from 'axios';
 
-function Home({history}) {
+function Home({ history }) {
   // console.log( axios.get('/api') ); // example call to api
-  const[error, setError] = useState("");
 
   const subscribe = () => {
     history.push("/signup");
-  }
+  };
 
   return (
     <div className="Home">
+      <img className="banner" src={mspBanner} alt="Banner" />
 
-      <img className="banner" src={mspBanner} alt="Banner"/>
-
-      <div className='who-we'>
+      <div className="who-we">
         <h3>Who we are.</h3>
         <p>
-          We are a volunteer organization made up of members all over the United States. Many of our volunteers are students from colleges and universities across the country. No special skills are required to join our volunteer team, just a passion to end mass shootings. 
+          We are a volunteer organization made up of members all over the United
+          States. Many of our volunteers are students from colleges and
+          universities across the country. No special skills are required to
+          join our volunteer team, just a passion to end mass shootings.
         </p>
       </div>
-      
 
       <div className="subscribe">
-        <h4 className='dashboard-title'> Subscribe to our newsletter to stay up to date with the orgnaization's latest! </h4>
+        <h4 className="dashboard-title">
+          {" "}
+          Subscribe to our newsletter to stay up to date with the
+          organization&apos;s latest!{" "}
+        </h4>
         <hr></hr>
-        <button className='subscribe-btn' onClick={subscribe}>Subscribe</button>            
+        <button className="subscribe-btn" onClick={subscribe}>
+          Subscribe
+        </button>
       </div>
     </div>
   );
@@ -61,7 +65,6 @@ function Home({history}) {
 
 */
 
-
 // mapboxgl.accessToken = 'pk.eyJ1IjoiaGlnZ3MzMiIsImEiOiJja3UwZnZtM2gxMDZqMnZvcXU5NHViamloIn0.KlO5rSrT27Ldm_KN6Gvobg';
 // const map = new mapboxgl.Map({
 //     container: 'map', // container ID
@@ -70,4 +73,4 @@ function Home({history}) {
 //     zoom: 9 // starting zoom
 // });
 
-export default Home
+export default Home;

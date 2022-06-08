@@ -28,12 +28,6 @@
     "lint": "npx eslint --fix-dry-run",
     "format": "npx prettier --check ."
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
   "babel": {
     "plugins": [
       "@babel/plugin-syntax-jsx"
