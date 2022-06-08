@@ -31,6 +31,6 @@ describe("Newsletter", () => {
     const response2 = await request
       .get("/api/newsletter/confirm")
       .query({ email: "massshootingdatabase@gmail.com" });
-    expect(response2.body.error).toEqual("Subscription was unsuccessful");
+    expect(response2.body.error).toEqual("Confirmation number does not match");
   });
 });
