@@ -10,7 +10,8 @@
     },
     "plugins": [
       "@babel",
-      "react"  
+      "react",
+      "prettier" 
     ],
     "extends": [
         "standard",
@@ -23,5 +24,6 @@
         "sourceType": "module"
     },
     "rules": {
+        "prettier/prettier": "warn"
     }
 }
