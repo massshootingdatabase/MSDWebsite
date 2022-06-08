@@ -1,23 +1,18 @@
-import React from 'react';
+import React from "react";
 import "./GetInvolvedScreen.scss";
-import ContactForm from './ContactForm/ContactForm';
+import ContactForm from "./ContactForm/ContactForm";
 
 function GetInvolved() {
   return (
-    <div className="getInvolved">   
-    <h2>Call to Action</h2>
-    <p>
-        Next steps for people who want to do something!
-    </p>
+    <div className="getInvolved">
+      <h2>Call to Action</h2>
+      <p>Next steps for people who want to do something!</p>
 
-    <h2>Contact Us!</h2>
-    <p>
-        Report an error or send us a message.
-    </p>
-    <ContactForm />
+      <h2>Contact Us!</h2>
+      <p>Report an error or send us a message.</p>
+      <ContactForm />
     </div>
-    
-  )
+  );
 }
 
-export default GetInvolved
+export default GetInvolved;

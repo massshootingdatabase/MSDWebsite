@@ -1,41 +1,42 @@
-import {useState, useEffect} from 'react';
-import axios from 'axios';
+import { useState, useEffect } from "react";
+import axios from "axios";
 import "./DashboardScreen.css";
 
-const Dashboard = ({history}) => {
-    const[error, setError] = useState("");
-    const[privateData, setPrivateData] = useState("");
+const Dashboard = ({ history }) => {
+  const [error, setError] = useState("");
+  const [privateData, setPrivateData] = useState("");
 
-    useEffect(() => {
-        if(!localStorage.getItem("authToken")){
-            history.push("/")
-        }
-    }, [history])
-    
-    const incident = () => {
-        history.push("/createincident");
-    };
+  useEffect(() => {
+    if (!localStorage.getItem("authToken")) {
+      history.push("/");
+    }
+  }, [history]);
 
-    const logoutHandler = () => {
-        localStorage.removeItem("authToken");
-        history.push("/login");
-    };
+  const incident = () => {
+    history.push("/createincident");
+  };
 
-    return error ?(
-        <span className="error-message">{error}</span> 
-    ) : (
-        <div className='dashboard'>
-            <div className='dashboard-container'>
-                <h2 > Data Entry Dashboard </h2>
-                <div >
-                    <hr></hr>
-                    <button className='btn btn-primary' onClick={incident}>+ Create Incident</button>            
-                </div>
-            </div>
-            <button onClick={logoutHandler}>Logout</button>
+  const logoutHandler = () => {
+    localStorage.removeItem("authToken");
+    history.push("/login");
+  };
+
+  return error ? (
+    <span className="error-message">{error}</span>
+  ) : (
+    <div className="dashboard">
+      <div className="dashboard-container">
+        <h2> Data Entry Dashboard </h2>
+        <div>
+          <hr></hr>
+          <button className="btn btn-primary" onClick={incident}>
+            + Create Incident
+          </button>
         </div>
-        
-    );
+      </div>
+      <button onClick={logoutHandler}>Logout</button>
+    </div>
+  );
 };
 
 export default Dashboard;
