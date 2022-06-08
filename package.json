@@ -10,7 +10,9 @@
     "heroku-postbuild": "npm run install-client && npm run build",
     "server": "nodemon index.js",
     "test": "jest --coverage",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "format": "npx prettier --check .",
+    "lint": "npx eslint --fix-dry-run ."
   },
   "dependencies": {
     "@sendgrid/client": "^7.6.2",
@@ -26,11 +28,20 @@
     "nodemon": "^2.0.15"
   },
   "devDependencies": {
+    "@babel/eslint-plugin": "^7.17.7",
     "@babel/plugin-syntax-jsx": "^7.16.7",
     "@babel/preset-env": "^7.17.10",
     "@babel/preset-react": "^7.16.7",
     "enzyme": "^3.11.0",
+    "eslint": "^8.17.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-n": "^15.2.1",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-react": "^7.30.0",
     "jest": "^28.1.0",
+    "prettier": "2.6.2",
     "supertest": "^6.2.3"
   },
   "jest": {

@@ -1,0 +1,8 @@
+*.json
+.babelrc
+.gitignore
+.nvmrc
+etl_pipeline
+node_modules/*
+.idea/*
+*.md
