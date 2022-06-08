@@ -84,12 +84,13 @@ async function getCustomFieldID(customFieldName) {
 exports.confirm = async (req, res, next) => {
   try {
     const contact = await getContactByEmail(req.query.email);
-    if (contact == null) throw `Contact not found.`;
-    if (contact.custom_fields.conf_num == req.query.conf_num) {
+    if (contact == null)
+      return next(new ErrorResponse("Contact not found", 404));
+    if (contact.custom_fields.conf_num === req.query.conf_num) {
       const listID = await getListID("Newsletter Subscribers");
       await addContactToList(req.query.email, listID);
     } else {
-      throw "Confirmation number does not match";
+      return next(new ErrorResponse("Confirmation number does not match", 400));
     }
     // .render('message', { message: 'You are now subscribed to our newsletter. We can\'t wait for you to hear from us!' });
     res.status(200).json({ success: true, data: "Subscribed!" });

@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 const ErrorResponse = require("../utils/errorResponse");
 const Incident = require("../models/Incidents");
 // const Shooter = require("../models/Shooter");
