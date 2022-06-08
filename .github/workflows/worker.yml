@@ -3,6 +3,14 @@ on: [push]
 jobs:
   pre-commit-checks:
     runs-on: ubuntu-latest
+    env:
+      DB_SERVER: ${{secrets.DB_SERVER}}
+      JWT_SECRET: ${{secrets.JWT_SECRET}}
+      JWT_EXPIRE: 10mins
+      EMAIL_SERVICE: SendGrid
+      EMAIL_USERNAME: ${{secrets.EMAIL_USERNAME}}
+      EMAIL_PASSWORD: ${{secrets.EMAIL_PASSWORD}}
+      EMAIL_FROM: ${{secrets.EMAIL_FROM}}
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
