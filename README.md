@@ -8,6 +8,14 @@ Download Node Package Manager (npm)
 * Jest - will be used for unit testing
 * Postman - recommended for testing APIs manually
 
+
+## Front-end
+* React 
+* Sass
+* GraphQL - We'll keep this as this will allow the frontend to more efficiently make requests
+* Tailwind CSS - seems interesting, may not be necessary
+
+
 # Getting Started on the backend
 
 ## Instructions
@@ -47,20 +55,13 @@ Runs the app in the development mode on a specified .env port or port 5000.
 Launches the JEST test runner.
 
 
-## Front-end
-* React 
-* Sass
-* GraphQL - We'll keep this as this will allow the frontend to more efficiently make requests
-* Tailwind CSS - seems interesting, may not be necessary
-
-
-# Getting Started with Create React App
+# Getting started with the frontend
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
-In the project directory, msp, you can run:
+In the project directory, client, run:
 
 ### `npm install`
 
