@@ -1,10 +1,11 @@
 import { React, useState } from "react";
-import "./style.scss";
+import "./DataScreen.scss";
 import DataTable from "react-data-table-component";
-import axios from "axios";
 
 /* eslint no-unused-vars: "off" */
 /* eslint camelcase: "off" */
+import axios from "axios";
+
 const columns = [
   {
     name: "Date",
