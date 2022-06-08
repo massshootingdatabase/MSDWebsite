@@ -1,7 +1,10 @@
-import React from "react";
-import "./DataScreen.scss";
+import { React, useState } from "react";
+import "./style.scss";
 import DataTable from "react-data-table-component";
+import axios from "axios";
 
+/* eslint no-unused-vars: "off" */
+/* eslint camelcase: "off" */
 const columns = [
   {
     name: "Date",
@@ -24,64 +27,97 @@ const columns = [
   },
   {
     name: "Gun Deaths",
-    selector: (row) => row.gunDeaths,
+    selector: (row) => row.deaths,
     sortable: true,
     compact: true,
   },
   {
     name: "Gun Wounded",
-    selector: (row) => row.gunWounded,
+    selector: (row) => row.wounded,
     sortable: true,
     compact: true,
   },
   {
     name: "Total",
-    selector: (row) => row.gunDeaths + row.gunWounded,
+    selector: (row) => row.deaths + row.wounded,
     sortable: true,
     compact: true,
     maxWidth: "20px",
   },
   {
-    name: "Fatal Victim Names",
-    selector: (row) => row.names,
+    name: "ID",
+    selector: (row) => row.id,
     compact: true,
     wrap: true,
   },
 ];
 
-const data = [
-  {
-    date: "5/30/2021",
-    state: "MS",
-    city: "Southaven",
-    gunDeaths: 2,
-    gunWounded: 2,
-    names: "Sean Chinn Jr",
-  },
-  {
-    date: "5/19/2021",
-    state: "AZ",
-    city: "Phoenix",
-    gunDeaths: 1,
-    gunWounded: 2,
-    names: "Margret Kahrer Female 81, John Charles Micco Male 78",
-  },
-];
+// https://react-data-table-component.netlify.app/?path=/docs/getting-started-intro--page
 
-//https://react-data-table-component.netlify.app/?path=/docs/getting-started-intro--page
+const Data = () => {
+  const [error, setError] = useState();
+  const [results, setResults] = useState();
 
-function Data() {
-  let moreData = [];
-  let i = 0;
-  while (i < 10) {
-    moreData = moreData.concat(data);
-    i += 1;
-  }
+  const SearchBar = () => (
+    <form onSubmit={searchHandler}>
+      <label htmlFor="header-search">
+        <span className="visually-hidden">Search incidents</span>
+      </label>
+      <input
+        type="text"
+        id="header-search"
+        placeholder="Search incidents"
+        name="s"
+      />
+      <button type="submit">Search</button>
+    </form>
+  );
+  let incidentsList = [];
+
+  const searchHandler = async (e) => {
+    e.preventDefault();
+
+    try {
+      const { data } = await axios.post("/api/incidents/get");
+      console.log(data);
+      if (data !== undefined && data.Incident.length > 0) {
+        data.Incident.forEach((d) => {
+          const { start_date, location, deaths, wounded, _id } = d;
+
+          const incident = {
+            date: start_date,
+            state: location.state,
+            city: location.city,
+            deaths,
+            wounded,
+            id: _id,
+          };
+          console.log(incident);
+
+          incidentsList = incidentsList.concat(incident);
+        });
+        console.log(incidentsList);
+        setResults(
+          <DataTable columns={columns} data={incidentsList} pagination />
+        );
+      }
+    } catch (error) {
+      console.log(error);
+      setError(error.response.data.error);
+      setTimeout(() => {
+        setError("");
+      }, 5000);
+    }
+  };
+
   return (
     <div className="Data">
-      <DataTable columns={columns} data={moreData} pagination />
+      <div className="search">
+        <SearchBar />
+      </div>
+      {results}
     </div>
   );
-}
+};
 
 export default Data;
