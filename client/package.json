@@ -24,7 +24,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "npx eslint --fix-dry-run",
+    "format": "npx prettier --check ."
   },
   "eslintConfig": {
     "extends": [
