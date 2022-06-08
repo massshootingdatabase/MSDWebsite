@@ -11,21 +11,20 @@
 const mongoose = require("mongoose");
 
 const privilegedSchema = new mongoose.Schema({
-        email : {
-            type: String,
-            required: [true, "Please provide an email"],
-            unique: true, 
-            match: [
-                /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                "Please provide a valid email address."
-            ]
-        },
-        accessLevel: {
-            type: Number,
-            required: [true, "Please provide an access level"]
-        }
-    }
-);
+  email: {
+    type: String,
+    required: [true, "Please provide an email"],
+    unique: true,
+    match: [
+      /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+      "Please provide a valid email address.",
+    ],
+  },
+  accessLevel: {
+    type: Number,
+    required: [true, "Please provide an access level"],
+  },
+});
 
 const Privileges = mongoose.model("Privileges", privilegedSchema);
 
