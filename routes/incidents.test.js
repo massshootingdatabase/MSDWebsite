@@ -22,22 +22,12 @@ describe("Incident insertion requests", () => {
   // GET INCIDENT
 
   it("Gets an incident by id", async () => {
-    const dummyIncident = {
-      id: "624a52501c5796cf2c190b7b",
-    };
-
-    const response = await request
-      .post("/api/incidents/get")
-      .send(dummyIncident);
+    const response = await request.get(
+      "/api/incidents/624a52501c5796cf2c190b7b"
+    );
     expect(response.statusCode).toBe(200);
 
-    const invalidIncident = {
-      id: "doesnotexist",
-    };
-
-    const response1 = await request
-      .post("/api/incidents/get")
-      .send(invalidIncident);
+    const response1 = await request.get("/api/incidents/doesnotexist");
     expect(response1.statusCode).toBe(401);
   });
 
