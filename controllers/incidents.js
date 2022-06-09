@@ -36,7 +36,7 @@ exports.create = async (req, res, next) => {
 
     if (victims !== undefined && victims.length > 0) {
       victims.forEach((v) => {
-        console.log(v.name);
+        // console.log(v.name);
         addVictim(v, incident, next);
       });
     }
@@ -206,7 +206,7 @@ function setupQuery(queryStrings) {
       $regex: ".*" + queryStrings.keyWord + ".*",
     };
   }
-  console.log(findOptions);
+  // console.log(findOptions);
 
   // process deaths
   const deathRange = createRange(
@@ -242,7 +242,7 @@ function setupQuery(queryStrings) {
     findOptions.start_date = dateRange;
   }
 
-  console.log(findOptions);
+  // console.log(findOptions);
 
   return findOptions;
 }
