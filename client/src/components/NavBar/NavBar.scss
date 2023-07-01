@@ -16,10 +16,10 @@
   .NavBarList {
     justify-content: flex-end;
     display: flex;
+    flex-wrap: wrap;
     padding: 10px;
     margin-right: 40px;
     align-items: center;
-    min-width: fit-content;
     width: 100%;
 
     li {
@@ -43,7 +43,6 @@
       color: white;
       text-align: center;
       text-decoration: none;
-      display: flex-block;
     }
   }
 }

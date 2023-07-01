@@ -1,15 +1,15 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-//Routing
+// Routing
 // import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 
-//Screen
+// Screen
 import PrivateScreen from "./screens/PrivateScreen/PrivateScreen";
 import LoginScreen from "./screens/LoginScreen/LoginScreen";
 import RegisterScreen from "./screens/RegisterScreen/RegisterScreen";
 import ForgotPasswordScreen from "./screens/ForgotPasswordScreen/ForgotPasswordScreen";
 import ResetPasswordScreen from "./screens/ResetPasswordScreen/ResetPasswordScreen";
-import DashboardScreen from "./screens/DashboardScreen/DashboardScreen"; //data entry dashboard
+import DashboardScreen from "./screens/DashboardScreen/DashboardScreen"; // data entry dashboard
 import CreateIncidentScreen from "./screens/CreateIncidentScreen/CreateIncidentScreen";
 import SignupScreen from "./screens/SignupScreen/SignupScreen";
 import HomeScreen from "./screens/HomeScreen/HomeScreen";

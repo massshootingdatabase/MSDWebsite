@@ -10,6 +10,7 @@ const Privileges = require("../models/Privileges");
 
 exports.register = async (req, res, next) => {
   const { email, password } = req.body;
+  console.log(email, password);
 
   try {
     const current = true;
@@ -27,6 +28,7 @@ exports.register = async (req, res, next) => {
     });
     sendToken(admin, 201, res);
   } catch (error) {
+    console.log(error);
     next(error);
   }
 };
@@ -40,6 +42,7 @@ exports.login = async (req, res, next) => {
 
   try {
     const admin = await Admin.findOne({ email }).select("+password");
+    console.log(admin);
 
     if (!admin) {
       return next(new ErrorResponse("Invalid credentials", 401));

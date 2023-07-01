@@ -8,7 +8,7 @@ import GetInvolved from "./GetInvolved";
 import { shallow } from "enzyme";
 import "./setupTests.js";
 
-//https://www.npmjs.com/package/enzyme
+// https://www.npmjs.com/package/enzyme
 
 describe("renders app", () => {
   it("renders with footer", () => {

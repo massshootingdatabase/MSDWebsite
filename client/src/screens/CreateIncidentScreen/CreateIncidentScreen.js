@@ -185,7 +185,7 @@ const CreateIncident = ({ history }) => {
         <div className="create-form-group">
           <label htmlFor="incidentId">GVA ID</label>
           <input
-            type="incidentId"
+            type="text"
             id="incidentId"
             placeholder="Optional"
             value={incidentId}
@@ -200,7 +200,7 @@ const CreateIncident = ({ history }) => {
             <div className="block-container">
               <label htmlFor="start_date">Start Date: </label>
               <input
-                type="start_date"
+                type="date"
                 // required
                 id="start_date"
                 placeholder="eg. 2019-12-28T09:53Z"
@@ -212,7 +212,7 @@ const CreateIncident = ({ history }) => {
             <div className="block-container">
               <label htmlFor="end_date">End Date: </label>
               <input
-                type="end_date"
+                type="date"
                 // required
                 id="end_date"
                 placeholder="eg. 2019-12-28T09:53Z"
@@ -229,7 +229,7 @@ const CreateIncident = ({ history }) => {
           <div className="casualties">
             <label htmlFor="deaths">Deaths:</label>
             <input
-              type="deaths"
+              type="number"
               // required
               id="deaths"
               placeholder="eg. 5"
@@ -239,7 +239,7 @@ const CreateIncident = ({ history }) => {
             />
             <label htmlFor="wounded">Wounded:</label>
             <input
-              type="wounded"
+              type="number"
               // required
               id="wounded"
               placeholder="eg. 2"
@@ -338,7 +338,7 @@ const CreateIncident = ({ history }) => {
           <div className="description">
             <input
               className="description-input"
-              type="description"
+              type="text"
               // required
               id="description"
               placeholder="incident name, 'shooter walked up and ..' "
@@ -353,7 +353,7 @@ const CreateIncident = ({ history }) => {
           <h3 style={{ paddingTop: "2ch" }}> Districts </h3>
           <div className="district">
             <input
-              type="congressional"
+              type="text"
               id="congressional"
               placeholder="Congressional"
               value={congressional}
@@ -361,7 +361,7 @@ const CreateIncident = ({ history }) => {
               tabIndex={6}
             />
             <input
-              type="senate"
+              type="text"
               id="senate"
               placeholder="State Senate"
               value={senate}
@@ -369,7 +369,7 @@ const CreateIncident = ({ history }) => {
               tabIndex={7}
             />
             <input
-              type="house"
+              type="text"
               id="house"
               placeholder="State House"
               value={house}
@@ -385,7 +385,7 @@ const CreateIncident = ({ history }) => {
             <div className="block-container">
               <label htmlFor="address">Address</label>
               <input
-                type="address"
+                type="text"
                 // required
                 id="address"
                 placeholder="street address"
@@ -397,7 +397,7 @@ const CreateIncident = ({ history }) => {
             <div className="block-container">
               <label htmlFor="city">City</label>
               <input
-                type="city"
+                type="text"
                 // required
                 id="city"
                 placeholder="eg. Los Angeles"
@@ -409,7 +409,6 @@ const CreateIncident = ({ history }) => {
             <div className="block-container">
               <label htmlFor="state">State</label>
               <select
-                type="state"
                 required
                 id="state"
                 onChange={(e) => setState(e.target.value)}
@@ -471,7 +470,7 @@ const CreateIncident = ({ history }) => {
             <div className="block-container">
               <label htmlFor="postalCode">Postal Code</label>
               <input
-                type="postalCode"
+                type="text"
                 // required
                 id="postalCode"
                 placeholder="eg. 91790"
@@ -509,7 +508,7 @@ const CreateIncident = ({ history }) => {
             <div className="block-container">
               <label htmlFor="coordinates">Coordinates</label>
               <input
-                type="lat"
+                type="text"
                 // required
                 id="lat"
                 placeholder="latitude"
@@ -518,7 +517,7 @@ const CreateIncident = ({ history }) => {
                 tabIndex={14}
               />
               <input
-                type="long"
+                type="text"
                 // required
                 id="long"
                 placeholder="longitude"
@@ -542,7 +541,7 @@ const CreateIncident = ({ history }) => {
               tabIndex={16}
             />
             <input
-              type="title"
+              type="text"
               // required
               id="title"
               placeholder="title"
@@ -550,9 +549,7 @@ const CreateIncident = ({ history }) => {
               onChange={(e) => setTitle(e.target.value)}
               tabIndex={17}
             />
-            <button type="button" onClick={addSrc}>
-              Add Another Source
-            </button>
+            <button onClick={addSrc}>Add Another Source</button>
           </div>
           <section className="source-output">
             <ul className="source-list"></ul>

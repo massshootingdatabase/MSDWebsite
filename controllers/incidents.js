@@ -102,6 +102,7 @@ exports.get = async (req, res, next) => {
       Incident: incident,
     });
   } catch (error) {
+    console.log("error");
     next(error);
   }
 };

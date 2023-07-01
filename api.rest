@@ -1,0 +1,84 @@
+@authToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZTI0NTg5YmNjMGZlNGRjNjliMTdlNCIsImlhdCI6MTY4Mzc2MzgyMSwiZXhwIjoxNjgzNzY0NDIxfQ.gVuyBroNaIAYdb6mE9XXJtJUag9FRbLyWSoO81b6y5E
+
+@resettoken = f0996c8716bf14173bda0423c866844bf9f98f47028b5539b5f4a8361210e2ab
+
+# AUTH
+
+###
+# Create
+POST http://localhost:5000/api/auth/register
+Content-Type: application/json
+
+###
+# Read (well, sign in, anyway)
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+
+{
+    "email": "joewrotehaikus@gmail.com",
+    "password": "M5db:Jlrope"
+}
+
+###
+# Read - privilege
+GET http://localhost:5000/api/auth/privilege
+Authorization: Bearer {{authToken}}
+
+###
+# Update - forgot password
+POST http://localhost:5000/api/auth/forgotpassword
+
+###
+# Update - reset password
+PUT http://localhost:5000/api/auth/resetpassword/{{resettoken}}
+
+###
+# Update - give privilege
+POST http://localhost:5000/api/auth/giveprivilege
+Content-Type: application/json
+
+{
+    "email": "joewrotehaikus@gmail.com",
+    "accessLevel": "3"
+}
+
+
+
+# INCIDENTS
+
+###
+# Create
+POST http://localhost:5000/api/incidents/create
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+
+}
+
+###
+# Read - just one
+GET http://localhost:5000/api/incidents/0123456789ab
+
+###
+# Read - limited number of incidents
+POST http://localhost:5000/api/incidents/get?limit=2
+
+
+
+# NEWSLETTER
+
+###
+# Create - signup
+POST http://localhost:5000/api/newsletter
+Content-Type: application/json
+
+{
+    "firstname": "Chuck",
+    "lastname": "Finley",
+    "email": "cfinley@burnnotice.xyz"
+}
+
+###
+# Update - confirm
+GET http://localhost:5000/api/newsletter?email=___&conf_num=___

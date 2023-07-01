@@ -26,13 +26,14 @@
 }
 
 .create-form-group {
+  max-width: 40rem;
   width: 100%;
   text-align: center;
   padding: 1.5rem;
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
   background: #fff;
+  margin-bottom: 0.5rem;
 }
-.create-form-group,
 .create-form-group label,
 .create-form-group input {
   width: 50%;
@@ -48,6 +49,10 @@
   background-color: #eee;
   outline-width: 0;
   font-size: 1rem;
+}
+
+.create-form-group label {
+  text-align: left;
 }
 
 .description,
@@ -93,6 +98,7 @@
   margin-top: 3ch;
   width: auto;
   display: flex;
+  flex-wrap: wrap;
 }
 
 /*--------------------- District Block --------------------------*/
